@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Page Not Found | Warfare 1942 Guide';
+const description = 'The requested Warfare 1942 Guide page could not be found. Return to the browser game, code status, download, or controls guide.';
+---
+
+<BaseLayout title={title} description={description} path="/404" noindex={true}>
+  <section class="page-hero">
+    <div class="shell">
+      <span class="eyebrow">Signal lost · 404</span>
+      <h1>Mission route not found</h1>
+      <p class="page-hero__lede">The page may have moved, or the address may be incomplete. Return to a live route below.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="shell content-grid">
+      <a class="guide-card" href="/unblocked/"><div class="guide-card__body"><h2>Play Warfare 1942</h2><p>Open the browser player.</p></div></a>
+      <a class="guide-card" href="/promo-codes/"><div class="guide-card__body"><h2>Promo code status</h2><p>Check current evidence.</p></div></a>
+      <a class="guide-card" href="/how-to-play/"><div class="guide-card__body"><h2>Field manual</h2><p>Review controls and loading help.</p></div></a>
+    </div>
+  </section>
+</BaseLayout>

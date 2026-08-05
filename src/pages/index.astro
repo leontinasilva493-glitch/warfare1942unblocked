@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ControlsGrid from '../components/ControlsGrid.astro';
+import GamePlayer from '../components/GamePlayer.astro';
+import VersionTable from '../components/VersionTable.astro';
+import { guideCards, site } from '../data/site.mjs';
+
+const title = 'Warfare 1942 Guide: Codes, Download & Online Play';
+const description = 'Play Warfare 1942 online and check verified promo code status, official Android links, browser controls, and version differences.';
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: 'Warfare 1942',
+    url: `${site.domain}/`,
+    gamePlatform: ['Web Browser', 'Android'],
+    applicationCategory: 'Game',
+    genre: ['Action', 'Shooter'],
+    isAccessibleForFree: true,
+    potentialAction: {
+      '@type': 'PlayAction',
+      target: `${site.domain}/unblocked/`
+    }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Can I play Warfare 1942 without downloading it?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Yes. The web build runs in a compatible browser without a PC or Mac installer.' }
+      },
+      {
+        '@type': 'Question',
+        name: 'Are there verified Warfare 1942 promo codes?',
+        acceptedAnswer: { '@type': 'Answer', text: `This guide has not independently verified an active Warfare 1942 promo code as of ${site.verifiedDate}.` }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout title={title} description={description} path="/" schema={schema}>
+  <section class="hero">
+    <div class="shell">
+      <div class="hero__status"><span class="status-dot" aria-hidden="true"></span> Play online · no PC install · free access</div>
+      <h1>Warfare 1942</h1>
+      <p class="hero__lede">Enter a hard-edged World War II multiplayer battlefield with infantry, armored combat, customizable soldiers, and war-dog abilities.</p>
+      <div class="hero__actions">
+        <a class="button button--gold" href="#play">Deploy to battle</a>
+        <a class="button button--ghost" href="/promo-codes/">Check code status</a>
+      </div>
+      <div class="stats-grid" aria-label="Warfare 1942 highlights">
+        <div class="stat-card"><strong>PvP</strong><span>Online matches</span></div>
+        <div class="stat-card"><strong>3D</strong><span>Shooter combat</span></div>
+        <div class="stat-card"><strong>14</strong><span>War dogs on Android</span></div>
+        <div class="stat-card"><strong>Web</strong><span>No PC installer</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="play">
+    <GamePlayer />
+  </div>
+
+  <section id="controls" class="section section--surface">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Field manual</span>
+        <h2>Controls at a glance</h2>
+        <p>These keys are listed for the distributed web build. Open the in-game settings before your first match in case the current release has changed a binding.</p>
+      </div>
+      <ControlsGrid />
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="shell about-grid">
+      <div class="about-grid__copy">
+        <span class="eyebrow">About the game</span>
+        <h2>Built for a fast, heavy frontline</h2>
+        <p>Warfare 1942 is a World War II-themed multiplayer shooter available in a browser and as a current Android listing. Its published feature set combines quick PvP battles with soldier customization, weapons, tank combat, and companion abilities.</p>
+        <ul class="feature-list">
+          <li><strong>Period arsenal</strong> — rifles, submachine guns, pistols, grenades, and more.</li>
+          <li><strong>Soldier customization</strong> — outfits, helmets, and accessories.</li>
+          <li><strong>War dogs</strong> — companions with specialized combat abilities.</li>
+          <li><strong>Tank battles</strong> — an armored mode listed for the current Android release.</li>
+        </ul>
+      </div>
+      <img class="about-grid__image" src="/images/about-battlefield.webp" width="460" height="420" alt="Soldier and tank moving through a smoky World War II battlefield" loading="lazy" />
+    </div>
+  </section>
+
+  <section id="versions" class="section section--surface">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Identify your build</span>
+        <h2>Which Warfare 1942 version do you have?</h2>
+        <p>The browser build, current Android app, and older Android identity should not be treated as interchangeable. Account, progress, and code compatibility have not been independently confirmed across versions.</p>
+      </div>
+      <VersionTable />
+    </div>
+  </section>
+
+  <section id="guides" class="section">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Mission briefings</span>
+        <h2>Prepare before you deploy</h2>
+        <p>Use the focused guides for current code status, safe platform links, and the complete keyboard field manual.</p>
+      </div>
+      <div class="guide-grid">
+        {guideCards.map((card) => (
+          <a class="guide-card" href={card.href}>
+            <img src={card.image} width="384" height="190" alt={card.alt} loading="lazy" />
+            <div class="guide-card__body">
+              <h3>{card.title}</h3>
+              <p>{card.label}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Frequently asked</span>
+        <h2>Warfare 1942 basics</h2>
+      </div>
+      <div class="faq-grid">
+        <article class="faq-item"><h3>Can I play without downloading it?</h3><p>Yes. Use the web player for Windows, macOS, or another compatible desktop browser. No PC installer is offered here.</p></article>
+        <article class="faq-item"><h3>Are there verified promo codes?</h3><p>No active code has been independently verified by this guide as of <time datetime={site.verifiedIso}>{site.verifiedDate}</time>.</p></article>
+        <article class="faq-item"><h3>Is the Android app the same as the web build?</h3><p>They share the Warfare 1942 name, but cross-platform accounts, progress, and code compatibility remain unconfirmed.</p></article>
+        <article class="faq-item"><h3>Does “unblocked” mean every network will allow it?</h3><p>No. A school, employer, ISP, or browser policy can still block game or third-party iframe traffic.</p></article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

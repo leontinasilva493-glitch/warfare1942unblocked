@@ -1,0 +1,12 @@
+---
+import { controls } from '../data/site.mjs';
+---
+
+<div class="controls-grid" role="list" aria-label="Warfare 1942 keyboard and mouse controls">
+  {controls.map((control) => (
+    <div class="control-card" role="listitem">
+      <kbd>{control.key}</kbd>
+      <span>{control.action}</span>
+    </div>
+  ))}
+</div>

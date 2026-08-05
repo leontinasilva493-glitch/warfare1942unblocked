@@ -1,0 +1,25 @@
+---
+import { canonicalUrl } from '../data/site.mjs';
+const { items } = Astro.props;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item: { label: string; href: string }, index: number) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    item: canonicalUrl(item.href)
+  }))
+};
+---
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    {items.map((item: { label: string; href: string }, index: number) => (
+      <li>
+        {index === items.length - 1 ? <span aria-current="page">{item.label}</span> : <a href={item.href}>{item.label}</a>}
+      </li>
+    ))}
+  </ol>
+</nav>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />

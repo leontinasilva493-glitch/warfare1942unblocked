@@ -1,0 +1,27 @@
+---
+import { site } from '../data/site.mjs';
+const {
+  eyebrow = 'VERIFICATION STATUS',
+  title,
+  status = 'No verified active codes',
+  detail = 'We publish a code only after a source and a working result can be recorded.'
+} = Astro.props;
+---
+
+<aside class="status-panel" aria-label={title ?? 'Verification status'}>
+  <div>
+    <span class="eyebrow">{eyebrow}</span>
+    <h2>{title ?? status}</h2>
+    <p>{detail}</p>
+  </div>
+  <dl>
+    <div>
+      <dt>Last checked</dt>
+      <dd><time datetime={site.verifiedIso}>{site.verifiedDate}</time></dd>
+    </div>
+    <div>
+      <dt>Status</dt>
+      <dd>{status}</dd>
+    </div>
+  </dl>
+</aside>

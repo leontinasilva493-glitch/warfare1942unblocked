@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import VersionTable from '../../components/VersionTable.astro';
+import { site } from '../../data/site.mjs';
+
+const title = 'Warfare 1942 Download for PC & Android – Official Links';
+const description = 'Use safe Warfare 1942 browser and Android links. Compare the current app with a legacy Android identity and avoid unverified APK or PC downloads.';
+---
+
+<BaseLayout title={title} description={description} path="/download/">
+  <header class="page-hero">
+    <div class="shell">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Download', href: '/download/' }]} />
+      <span class="eyebrow">Safe deployment</span>
+      <h1>Warfare 1942 Download: Official PC and Android Options</h1>
+      <p class="page-hero__lede">PC and Mac players can use the browser build without an installer. Android players should verify the developer and package before installing.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="shell content-grid">
+      <article class="content-card">
+        <span class="eyebrow">Windows & Mac</span>
+        <h2>Play in your browser</h2>
+        <p>The web edition does not require an EXE, DMG, or desktop launcher from this site.</p>
+        <a class="button button--gold" href="/unblocked/">Play in browser</a>
+      </article>
+      <article class="content-card">
+        <span class="eyebrow">Current Android</span>
+        <h2>Use Google Play</h2>
+        <p>Listing checked: Mosaic Games LLC, package <code>com.warfare.ww2.online</code>.</p>
+        <a class="button button--gold" href={site.googlePlayUrl} target="_blank" rel="noopener">Open Google Play</a>
+      </article>
+      <article class="content-card">
+        <span class="eyebrow">iPhone & iPad</span>
+        <h2>Identity not confirmed</h2>
+        <p>This guide has not verified an App Store listing as the same product, so no iOS download button is provided.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Version control</span>
+        <h2>Compare before you install</h2>
+        <p>Matching names do not prove that two listings share a developer, account system, progress, purchases, or promo codes.</p>
+      </div>
+      <VersionTable />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell prose">
+      <span class="eyebrow">Security check</span>
+      <h2>Do not download a random Warfare 1942 APK</h2>
+      <p>This site does not host APK, EXE, DMG, mod, or cracked files. A third-party package can be outdated, modified, or signed by a different party even when the title and icon look familiar.</p>
+      <ul>
+        <li>Open the store listing directly and check the developer name.</li>
+        <li>Verify the package ID before installing.</li>
+        <li>Review requested permissions and the store's data-safety information.</li>
+        <li>Avoid pages that disguise advertisements as download buttons.</li>
+      </ul>
+      <div class="callout callout--warning"><strong>Legacy Android reference:</strong> <code>com.ww2.shooter.war.games.online</code> has been associated with an older Full HP Ltd identity. It is recorded to prevent version confusion, not as an APK recommendation.</div>
+
+      <h2>After the game opens</h2>
+      <p>Use the <a href="/how-to-play/">control guide</a> for the web build. Cross-platform progress and accounts have not been independently confirmed, so do not assume a browser session will transfer to Android.</p>
+    </div>
+  </section>
+</BaseLayout>

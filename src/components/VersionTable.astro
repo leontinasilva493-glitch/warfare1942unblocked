@@ -1,0 +1,26 @@
+---
+import { versionRows } from '../data/site.mjs';
+---
+
+<div class="table-scroll" tabindex="0" role="region" aria-label="Warfare 1942 version comparison">
+  <table class="version-table">
+    <thead>
+      <tr>
+        <th scope="col">Version</th>
+        <th scope="col">Developer / identity</th>
+        <th scope="col">Package or entry</th>
+        <th scope="col">Recommended action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {versionRows.map((row) => (
+        <tr>
+          <th scope="row">{row.version}</th>
+          <td>{row.identity}</td>
+          <td><code>{row.entry}</code></td>
+          <td>{row.href ? <a href={row.href} target={row.href.startsWith('http') ? '_blank' : undefined} rel={row.href.startsWith('http') ? 'noopener' : undefined}>{row.guidance}</a> : row.guidance}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

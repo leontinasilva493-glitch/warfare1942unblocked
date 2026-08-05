@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { site } from '../../data/site.mjs';
+
+const title = 'Privacy Policy | Warfare 1942 Guide';
+const description = 'Learn what Warfare 1942 Guide stores locally, how the third-party game iframe works, and which external services receive requests.';
+---
+
+<BaseLayout title={title} description={description} path="/privacy/">
+  <header class="page-hero">
+    <div class="shell">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Privacy', href: '/privacy/' }]} />
+      <span class="eyebrow">Trust & disclosure</span>
+      <h1>Privacy Policy</h1>
+      <p class="page-hero__lede">Effective <time datetime={site.verifiedIso}>{site.verifiedDate}</time>. This page describes the static site as currently built, including the advertising delivered inside its third-party game player.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>What this site collects</h2>
+      <p>The static guide does not provide accounts, comments, uploads, payments, or a first-party analytics tracker. The “Save page” control writes one preference to your browser's local storage. That value stays on your device and can be removed through browser storage settings.</p>
+
+      <h2>Third-party game frame</h2>
+      <p>The Warfare 1942 player is loaded from <code>www.gamezhero.com</code> through its public embed page. Gamezhero then loads the game client and advertising services from GameDistribution and its partners. Opening or interacting with that frame sends your browser request, IP address, user-agent information, and related technical data to those providers. Their cookies, advertisements, or telemetry are governed by their own policies.</p>
+
+      <h2>External links</h2>
+      <p>Links may open CrazyGames, Google Play, Gamezhero, GameDistribution, or GitHub. Those services receive the normal information associated with a direct web request and apply their own privacy terms.</p>
+
+      <h2>Browser permissions</h2>
+      <p>The iframe is allowed to request autoplay, fullscreen, and gamepad capabilities needed by browser game features. Your browser remains responsible for permission prompts and enforcement.</p>
+
+      <h2>Policy updates</h2>
+      <p>This policy should be revised before adding analytics, advertising, contact forms, accounts, or another game distributor. Material changes receive a new effective date.</p>
+
+      <h2>Questions</h2>
+      <p>Use the <a href="/contact/">contact page</a> to report a privacy or attribution issue.</p>
+    </div>
+  </section>
+</BaseLayout>

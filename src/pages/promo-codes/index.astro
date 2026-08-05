@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import StatusPanel from '../../components/StatusPanel.astro';
+import { site } from '../../data/site.mjs';
+
+const title = 'Warfare 1942 Promo Codes: Any Working Codes? (August 2026)';
+const description = 'Check the current Warfare 1942 promo code status, verification method, version compatibility, and what to inspect before trusting a code list.';
+---
+
+<BaseLayout title={title} description={description} path="/promo-codes/">
+  <header class="page-hero">
+    <div class="shell">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Promo Codes', href: '/promo-codes/' }]} />
+      <span class="eyebrow">Code intelligence</span>
+      <h1>Warfare 1942 Promo Codes: Are Any Codes Working?</h1>
+      <p class="page-hero__lede">A code belongs on this page only after its source, platform, reward, and test result can be recorded. Empty space is better than a fabricated reward.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="shell">
+      <StatusPanel title="No independently verified active codes" status="0 verified active codes" detail="No code has passed this guide's publication standard for the web or current Android version." />
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="shell content-grid">
+      <article class="content-card">
+        <span class="eyebrow">01 · Source</span>
+        <h2>Where a code must come from</h2>
+        <p>We look for a developer announcement, an in-game event, or another direct source. A search result title or an unsourced list is not enough.</p>
+      </article>
+      <article class="content-card">
+        <span class="eyebrow">02 · Test</span>
+        <h2>What must be recorded</h2>
+        <p>A publishable result needs the exact code, reward, applicable version, test date, redemption location, and a clear success or failure result.</p>
+      </article>
+      <article class="content-card">
+        <span class="eyebrow">03 · Status</span>
+        <h2>How updates work</h2>
+        <p>Active, unverified, and expired are separate states. The visible date changes only after the evidence is checked again.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell prose">
+      <span class="eyebrow">Redemption check</span>
+      <h2>No verified redemption steps yet</h2>
+      <p>We have not independently documented a stable code-redemption menu for every Warfare 1942 version. For that reason, this page does not publish guessed menu paths such as “Settings → Gift Code.” If the current build exposes a code field, its exact location and platform still need a recorded test.</p>
+      <div class="callout">The web build and Android app may not share accounts, events, rewards, or code systems. Treat a version-less code claim as unverified.</div>
+
+      <h2>Why a Warfare 1942 code may fail</h2>
+      <ul>
+        <li>It was issued for a different web or mobile release.</li>
+        <li>The event or campaign has ended.</li>
+        <li>The code is region-limited, account-limited, or single-use.</li>
+        <li>Capitalization or a copied space changed the input.</li>
+        <li>The list copied a code from another game without evidence.</li>
+      </ul>
+
+      <h2>What to do next</h2>
+      <p>Check the <a href="/download/">version comparison</a> first, then use the <a href={site.crazyGamesUrl} target="_blank" rel="noopener">current CrazyGames page</a> or the official Android listing for direct announcements. If you have reproducible evidence, send it through the <a href="/contact/">contact page</a>.</p>
+    </div>
+  </section>
+</BaseLayout>

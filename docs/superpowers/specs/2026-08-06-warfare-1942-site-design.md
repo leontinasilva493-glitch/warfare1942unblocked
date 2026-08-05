@@ -8,7 +8,7 @@ Build a production-ready English static game guide for `https://warfare1942unblo
 
 1. `Warfare-1942-快速上站更新版方案.md` controls information architecture, evidence standards, SEO, platform claims, and compliance copy.
 2. `design-export/warfare-1942-design-spec.md` and its seven PNG references control visual direction, spacing, color, typography, and responsive layout.
-3. The user's explicit instruction on 2026-08-06 controls the player: the site must iframe the CrazyGames-hosted game.
+3. The user's explicit instruction on 2026-08-06 controls the player outcome: visitors must be able to play Warfare 1942 in an iframe on the site.
 
 ## Architecture
 
@@ -21,7 +21,10 @@ Build a production-ready English static game guide for `https://warfare1942unblo
 ## Player decision
 
 - Do not iframe `https://www.crazygames.com/game/warfare-1942-riz`; it currently returns `X-Frame-Options: SAMEORIGIN` and will be blocked.
-- Use the game frame loaded by the CrazyGames page: `https://games.crazygames.com/en_US/warfare-1942-riz/index.html`.
+- Browser QA showed that the CrazyGames internal frame displays an exclusivity notice outside CrazyGames and does not deliver playable gameplay.
+- Miniplay's wrapper is not used because its nested player rejects an independent top-level origin through CSP.
+- Use Gamezhero's public Warfare 1942 embed page: `https://www.gamezhero.com/get-game-code/cd49f7f7616e5661b97901dc688b4385`.
+- Disclose that the public embed shows advertising and several provider-controlled start prompts before the GameDistribution client loads.
 - Grant fullscreen, autoplay, clipboard, and gamepad permissions needed for play.
 - Keep a visible loading layer, fullscreen control, and an external CrazyGames fallback link.
 - Disclose the third-party frame in Privacy and do not promise that school or workplace filters can be bypassed.
@@ -58,4 +61,3 @@ Build a production-ready English static game guide for `https://warfare1942unblo
 - Local production preview must return 200 for all routes and 404 for an unknown route.
 - Desktop and mobile screenshots verify visual hierarchy, no overflow, and player aspect ratio.
 - Browser console and iframe loading are checked; any third-party console noise is reported separately from site-owned errors.
-

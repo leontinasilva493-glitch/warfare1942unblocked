@@ -1,0 +1,35 @@
+---
+import { site } from '../data/site.mjs';
+const { compact = false } = Astro.props;
+---
+
+<section class:list={['game-player-block', compact && 'game-player-block--compact']} aria-labelledby="player-title" data-game-player>
+  <div class="game-frame" data-game-container>
+    <div class="game-loading" data-game-loading>
+      <span class="eyebrow">THIRD-PARTY WEB BUILD</span>
+      <h2 id="player-title">Warfare 1942</h2>
+      <p data-loading-message>Preparing the Warfare 1942 web build…</p>
+    </div>
+    <iframe
+      src={site.iframeUrl}
+      title="Play Warfare 1942 in the embedded web player"
+      loading="eager"
+      allow="autoplay; fullscreen; gamepad"
+      allowfullscreen
+      referrerpolicy="strict-origin-when-cross-origin"
+      data-game-frame
+    ></iframe>
+  </div>
+  <div class="game-toolbar">
+    <p><span class="status-dot" aria-hidden="true"></span> Landscape mode recommended · third-party game frame</p>
+    <div class="game-toolbar__actions">
+      <button class="button button--ghost" type="button" data-save-page aria-pressed="false">Save page</button>
+      <button class="button button--ghost" type="button" data-share-page>Share</button>
+      <button class="button button--gold" type="button" data-fullscreen>Fullscreen</button>
+    </div>
+  </div>
+  <div class="game-fallback" data-game-fallback>
+    <p>The provider may show advertising and several start prompts before the game loads. If it never starts, your browser or network may be blocking the frame.</p>
+    <a href={site.crazyGamesUrl} target="_blank" rel="noopener">Play on CrazyGames <span aria-hidden="true">↗</span></a>
+  </div>
+</section>

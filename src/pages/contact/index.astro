@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { site } from '../../data/site.mjs';
+
+const title = 'Contact Warfare 1942 Guide';
+const description = 'Report a Warfare 1942 code claim, incorrect platform detail, broken link, game-frame problem, or attribution issue with reproducible evidence.';
+---
+
+<BaseLayout title={title} description={description} path="/contact/">
+  <header class="page-hero">
+    <div class="shell">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Contact', href: '/contact/' }]} />
+      <span class="eyebrow">Evidence channel</span>
+      <h1>Contact Warfare 1942 Guide</h1>
+      <p class="page-hero__lede">Send reproducible corrections for code status, version identity, controls, player loading, or attribution. Do not send account passwords, payment details, or private player data.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="shell content-grid">
+      <article class="content-card"><span class="eyebrow">Codes</span><h2>Submit a code claim</h2><p>Include the exact code, source URL, platform, reward, test date, and a screenshot that does not expose private account data.</p></article>
+      <article class="content-card"><span class="eyebrow">Technical</span><h2>Report a broken route</h2><p>Include the page URL, browser, device, visible error, and whether the external CrazyGames page also failed.</p></article>
+      <article class="content-card"><span class="eyebrow">Rights</span><h2>Request attribution review</h2><p>Identify the affected asset or statement, your relationship to it, and a direct way to verify the claim.</p></article>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="shell prose">
+      <span class="eyebrow">Public tracker</span>
+      <h2>Open a documented GitHub issue</h2>
+      <p>This release does not pretend that an unconfigured email address or inactive form is a working support channel. Use the public repository's issue tracker for a correction that can be documented and reviewed.</p>
+      <p><a class="button button--gold" href={`${site.repositoryUrl}/issues/new`} target="_blank" rel="noopener">Open an issue on GitHub</a></p>
+      <p class="muted">For game-account, purchase, ban, or technical support inside Warfare 1942, contact the game or distribution platform directly. This independent guide cannot access player accounts.</p>
+    </div>
+  </section>
+</BaseLayout>

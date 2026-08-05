@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import GamePlayer from '../../components/GamePlayer.astro';
+import { site } from '../../data/site.mjs';
+
+const title = 'Warfare 1942 Unblocked – Play Online Without Download';
+const description = 'Play Warfare 1942 in a public distributor iframe, use fullscreen mode, and get clear loading help plus a CrazyGames fallback.';
+---
+
+<BaseLayout title={title} description={description} path="/unblocked/">
+  <header class="page-hero">
+    <div class="shell">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Play Online', href: '/unblocked/' }]} />
+      <span class="eyebrow">Browser deployment</span>
+      <h1>Warfare 1942 Unblocked: Play Online</h1>
+      <p class="page-hero__lede">Start the distributed web build without a PC download. “Unblocked” describes browser access here; it is not a promise that every school, employer, or network will allow the game.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="shell">
+      <GamePlayer compact={true} />
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="shell content-grid">
+      <article class="content-card"><span class="eyebrow">Before launch</span><h2>Use landscape mode</h2><p>A desktop display or landscape tablet gives the player enough room for the HUD, map, and full set of controls.</p></article>
+      <article class="content-card"><span class="eyebrow">During play</span><h2>Enter fullscreen</h2><p>Use the gold Fullscreen button below the frame. Press Escape to leave fullscreen and return to this guide.</p></article>
+      <article class="content-card"><span class="eyebrow">If blocked</span><h2>Use the fallback</h2><p>Open the <a href={site.crazyGamesUrl} target="_blank" rel="noopener">game on CrazyGames</a>. Network filters can still block either destination.</p></article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell prose">
+      <span class="eyebrow">Loading help</span>
+      <h2>Why the player may stay blank</h2>
+      <p>The game is delivered by a third party inside an iframe. Content blockers, disabled hardware acceleration, browser privacy settings, and network policy can prevent scripts or assets from loading.</p>
+      <p>Gamezhero and GameDistribution control the launch flow. Expect provider advertising and more than one Play prompt before the game client begins loading.</p>
+      <ul>
+        <li>Reload once after allowing the game frame.</li>
+        <li>Try a current Chrome, Edge, or Firefox release.</li>
+        <li>Temporarily allow the third-party frame in your content blocker.</li>
+        <li>Close other WebGL games and memory-heavy tabs.</li>
+        <li>Use the external CrazyGames link when embedding is restricted.</li>
+      </ul>
+      <div class="callout callout--warning">This guide does not provide proxies, VPN instructions, disguised tabs, or methods to bypass an administrator's network controls.</div>
+      <p>Need the keys? Open the complete <a href="/how-to-play/">Warfare 1942 controls and beginner guide</a>.</p>
+    </div>
+  </section>
+</BaseLayout>

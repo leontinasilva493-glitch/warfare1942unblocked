@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://warfare1942unblocked.org/sitemap.xml
