@@ -52,3 +52,14 @@ test('built site contains no production placeholders or fabricated example code'
   const html = [...builtRoutes.values()].filter(existsSync).map((file) => readFileSync(file, 'utf8')).join('\n');
   assert.doesNotMatch(html, /EXAMPLE_ONLY_NOT_FOR_PRODUCTION|YOUR-DOMAIN|example\.com/i);
 });
+
+test('every built page loads the configured Microsoft Clarity project once', () => {
+  for (const [route, file] of builtRoutes) {
+    if (!existsSync(file)) continue;
+    const html = readFileSync(file, 'utf8');
+    const loaders = html.match(/https:\/\/www\.clarity\.ms\/tag\//g) ?? [];
+    const projectInitializers = html.match(/"clarity",\s*"script",\s*"xy7h8iffbr"/g) ?? [];
+    assert.equal(loaders.length, 1, `${route} must include one Clarity loader`);
+    assert.equal(projectInitializers.length, 1, `${route} must initialize the configured Clarity project once`);
+  }
+});
