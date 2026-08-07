@@ -5,7 +5,7 @@ import GamePlayer from '../../components/GamePlayer.astro';
 import { site } from '../../data/site.mjs';
 
 const title = 'Warfare 1942 Unblocked – Play Online Without Download';
-const description = 'Play Warfare 1942 in a public distributor iframe, use fullscreen mode, and get clear loading help plus a CrazyGames fallback.';
+const description = 'Play the Warfare 1942 online shooter without a PC download, use fullscreen mode, and get loading help plus a CrazyGames fallback.';
 ---
 
 <BaseLayout title={title} description={description} path="/unblocked/">
@@ -14,13 +14,24 @@ const description = 'Play Warfare 1942 in a public distributor iframe, use fulls
       <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Play Online', href: '/unblocked/' }]} />
       <span class="eyebrow">Browser deployment</span>
       <h1>Warfare 1942 Unblocked: Play Online</h1>
-      <p class="page-hero__lede">Start the distributed web build without a PC download. “Unblocked” describes browser access here; it is not a promise that every school, employer, or network will allow the game.</p>
+      <p class="page-hero__lede">Start the Warfare 1942 online shooter in a browser without a PC download. “Unblocked” describes browser access here; it is not a promise that every school, employer, or network will allow the game.</p>
     </div>
   </header>
 
   <section class="section">
     <div class="shell">
       <GamePlayer compact={true} />
+      <div class="section-heading">
+        <span class="eyebrow">Play-now answer</span>
+        <h2>Warfare 1942 online quick facts</h2>
+        <p>Play the distributed web game here, then use the loading and access guidance below if the frame does not start. Browser requirements, controls, and network limits stay together on this page.</p>
+      </div>
+      <div class="stats-grid" aria-label="Warfare 1942 online quick facts">
+        <div class="stat-card"><strong>Web</strong><span>Runs in a browser frame</span></div>
+        <div class="stat-card"><strong>Free</strong><span>No PC installer here</span></div>
+        <div class="stat-card"><strong>WASD</strong><span>Keyboard and mouse</span></div>
+        <div class="stat-card"><strong>3rd party</strong><span>Provider-controlled loading</span></div>
+      </div>
     </div>
   </section>
 

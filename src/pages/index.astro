@@ -6,7 +6,7 @@ import VersionTable from '../components/VersionTable.astro';
 import { guideCards, site } from '../data/site.mjs';
 
 const title = 'Warfare 1942 Guide: Codes, Download & Online Play';
-const description = 'Play Warfare 1942 online and check verified promo code status, official Android links, browser controls, and version differences.';
+const description = 'Play Warfare 1942, a session-based World War II online shooter, and check browser controls, Android identity, and current promo code status.';
 const schema = [
   {
     '@context': 'https://schema.org',
@@ -17,6 +17,11 @@ const schema = [
     applicationCategory: 'Game',
     genre: ['Action', 'Shooter'],
     isAccessibleForFree: true,
+    creator: {
+      '@type': 'Organization',
+      name: 'Fahrenheit Dev',
+      url: site.developerUrl
+    },
     potentialAction: {
       '@type': 'PlayAction',
       target: `${site.domain}/unblocked/`
@@ -35,6 +40,11 @@ const schema = [
         '@type': 'Question',
         name: 'Are there verified Warfare 1942 promo codes?',
         acceptedAnswer: { '@type': 'Answer', text: `This guide has not independently verified an active Warfare 1942 promo code as of ${site.verifiedDate}.` }
+      },
+      {
+        '@type': 'Question',
+        name: 'Is Warfare 1942 an Armor Games title?',
+        acceptedAnswer: { '@type': 'Answer', text: `No current Warfare 1942 listing was found on Armor Games as of ${site.verifiedDate}. Do not confuse this shooter with the older Warfare 1917 or Warfare 1944 strategy games.` }
       }
     ]
   }
@@ -46,7 +56,7 @@ const schema = [
     <div class="shell">
       <div class="hero__status"><span class="status-dot" aria-hidden="true"></span> Play online · no PC install · free access</div>
       <h1>Warfare 1942</h1>
-      <p class="hero__lede">Enter a hard-edged World War II multiplayer battlefield with infantry, armored combat, customizable soldiers, and war-dog abilities.</p>
+      <p class="hero__lede">Warfare 1942 is a session-based World War II online shooter with infantry firefights, armored combat, customizable soldiers, and war-dog abilities.</p>
       <div class="hero__actions">
         <a class="button button--gold" href="#play">Deploy to battle</a>
         <a class="button button--ghost" href="/promo-codes/">Check code status</a>
@@ -80,7 +90,8 @@ const schema = [
       <div class="about-grid__copy">
         <span class="eyebrow">About the game</span>
         <h2>Built for a fast, heavy frontline</h2>
-        <p>Warfare 1942 is a World War II-themed multiplayer shooter available in a browser and as a current Android listing. Its published feature set combines quick PvP battles with soldier customization, weapons, tank combat, and companion abilities.</p>
+        <p><a href={site.developerUrl} target="_blank" rel="noopener">Fahrenheit Dev</a> presents Warfare 1942 as a session-based shooter for web and mobile platforms. Its published feature set combines quick PvP battles with soldier customization, weapons, tank combat, and companion abilities.</p>
+        <p>The current Google Play listing uses the same game name under Mosaic Games LLC. Browser and Android account, progress, purchase, and event compatibility remain unconfirmed, so this guide keeps their identities separate.</p>
         <ul class="feature-list">
           <li><strong>Period arsenal</strong> — rifles, submachine guns, pistols, grenades, and more.</li>
           <li><strong>Soldier customization</strong> — outfits, helmets, and accessories.</li>
@@ -135,6 +146,10 @@ const schema = [
         <article class="faq-item"><h3>Are there verified promo codes?</h3><p>No active code has been independently verified by this guide as of <time datetime={site.verifiedIso}>{site.verifiedDate}</time>.</p></article>
         <article class="faq-item"><h3>Is the Android app the same as the web build?</h3><p>They share the Warfare 1942 name, but cross-platform accounts, progress, and code compatibility remain unconfirmed.</p></article>
         <article class="faq-item"><h3>Does “unblocked” mean every network will allow it?</h3><p>No. A school, employer, ISP, or browser policy can still block game or third-party iframe traffic.</p></article>
+        <article class="faq-item">
+          <h3>Is Warfare 1942 an Armor Games title?</h3>
+          <p>We found no current Warfare 1942 listing on Armor Games as of <time datetime={site.verifiedIso}>{site.verifiedDate}</time>. Do not confuse this shooter with <a href={site.warfare1917Url} target="_blank" rel="noopener">Warfare 1917</a> or <a href={site.warfare1944Url} target="_blank" rel="noopener">Warfare 1944</a>, the older strategy games developed by ConArtists.</p>
+        </article>
       </div>
     </div>
   </section>

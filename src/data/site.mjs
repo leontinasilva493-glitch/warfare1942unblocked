@@ -3,12 +3,16 @@ export const site = {
   displayName: 'WARFARE 1942',
   domain: 'https://warfare1942unblocked.org',
   description: 'An independent Warfare 1942 guide for browser play, controls, promo code status, and safe download links.',
-  verifiedDate: 'August 6, 2026',
-  verifiedIso: '2026-08-06',
+  verifiedDate: 'August 7, 2026',
+  verifiedIso: '2026-08-07',
   iframeUrl: 'https://www.gamezhero.com/get-game-code/cd49f7f7616e5661b97901dc688b4385',
   embedProvider: 'Gamezhero',
+  developerUrl: 'https://fahrenheitdev.com/',
   crazyGamesUrl: 'https://www.crazygames.com/game/warfare-1942-riz',
   googlePlayUrl: 'https://play.google.com/store/apps/details?id=com.warfare.ww2.online',
+  legacyAndroidRecordUrl: 'https://www.appbrain.com/app/warfare-1942-shooting-games/com.ww2.shooter.war.games.online',
+  warfare1917Url: 'https://armorgames.com/play/2267/',
+  warfare1944Url: 'https://armorgames.com/play/4071/warfare-1944',
   repositoryUrl: 'https://github.com/leontinasilva493-glitch/warfare1942unblocked'
 };
 
@@ -36,7 +40,7 @@ export const controls = [
 export const versionRows = [
   {
     version: 'Web browser',
-    identity: 'Distributor web build',
+    identity: 'Fahrenheit Dev title / distributor build',
     entry: 'Browser player',
     guidance: 'Play online; no installer is required.',
     href: '/unblocked/'
@@ -50,9 +54,9 @@ export const versionRows = [
   },
   {
     version: 'Legacy Android',
-    identity: 'Full HP Ltd',
+    identity: 'Archived publisher records vary',
     entry: 'com.ww2.shooter.war.games.online',
-    guidance: 'Historical identity reference; no APK is hosted here.'
+    guidance: 'No longer available on Google Play; no APK is hosted here.'
   },
   {
     version: 'iPhone / iPad',
