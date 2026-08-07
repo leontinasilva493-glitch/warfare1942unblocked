@@ -63,3 +63,35 @@ test('every built page loads the configured Microsoft Clarity project once', () 
     assert.equal(projectInitializers.length, 1, `${route} must initialize the configured Clarity project once`);
   }
 });
+
+test('homepage answers the game identity and Armor Games confusion', () => {
+  const html = readFileSync('dist/index.html', 'utf8');
+  assert.match(html, /session-based World War II online shooter/i);
+  assert.match(html, /href="https:\/\/fahrenheitdev\.com\//i);
+  assert.match(html, /no current Warfare 1942 listing on Armor Games/i);
+  assert.match(html, /Warfare 1917/);
+  assert.match(html, /Warfare 1944/);
+});
+
+test('online page directly answers play-now and no-download intent', () => {
+  const html = readFileSync('dist/unblocked/index.html', 'utf8');
+  assert.match(html, /online shooter/i);
+  assert.match(html, /without a PC download/i);
+  assert.match(html, /Warfare 1942 online quick facts/i);
+});
+
+test('download page distinguishes current, legacy, and unverified listings', () => {
+  const html = readFileSync('dist/download/index.html', 'utf8');
+  assert.match(html, /com\.warfare\.ww2\.online/);
+  assert.match(html, /com\.ww2\.shooter\.war\.games\.online/);
+  assert.match(html, /no longer available on Google Play/i);
+  assert.match(html, /App Store listing.*not independently verified/is);
+});
+
+test('promo-code page gives dated web and Android status answers', () => {
+  const html = readFileSync('dist/promo-codes/index.html', 'utf8');
+  assert.match(html, /Web build/i);
+  assert.match(html, /Current Android/i);
+  assert.match(html, /No independently verified active codes/i);
+  assert.match(html, /<time datetime="2026-08-07">August 7, 2026<\/time>/i);
+});

@@ -46,6 +46,16 @@ test('crawl and deployment files target the production domain', () => {
   }
 });
 
+test('sitemap dates reflect the pages refreshed for current search intent', () => {
+  const sitemap = readFileSync('public/sitemap.xml', 'utf8');
+  for (const path of ['', 'promo-codes/', 'download/', 'unblocked/']) {
+    assert.ok(
+      sitemap.includes(`<loc>${domain}/${path}</loc><lastmod>2026-08-07</lastmod>`),
+      `sitemap date is stale for /${path}`
+    );
+  }
+});
+
 test('Astro inline and external scripts declare inline handling explicitly', () => {
   for (const file of ['src/layouts/BaseLayout.astro', 'src/components/Breadcrumbs.astro']) {
     const source = readFileSync(file, 'utf8');
