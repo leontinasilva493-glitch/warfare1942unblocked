@@ -1,0 +1,47 @@
+---
+import { promoStatus } from '../data/promo-status.mjs';
+---
+
+<section class="promo-update" aria-labelledby="promo-update-title">
+  <div class="promo-update__heading">
+    <div>
+      <span class="eyebrow">Weekly verification</span>
+      <h2 id="promo-update-title">{promoStatus.cadenceLabel}</h2>
+      <p><strong>Quick answer: No independently verified active codes.</strong> There are {promoStatus.activeCodeCount} independently verified active Warfare 1942 promo codes for the web or current Android version.</p>
+    </div>
+    <span class="promo-update__badge">{promoStatus.statusLabel}</span>
+  </div>
+
+  <dl class="promo-update__schedule">
+    <div>
+      <dt>Last verified</dt>
+      <dd><time datetime={promoStatus.lastChecked.iso}>{promoStatus.lastChecked.label}</time></dd>
+    </div>
+    <div>
+      <dt>Next scheduled check</dt>
+      <dd><time datetime={promoStatus.nextCheck.iso}>{promoStatus.nextCheck.label}</time></dd>
+    </div>
+  </dl>
+
+  <div class="promo-update__platforms" aria-label="Verification status by version">
+    {promoStatus.platforms.map((platform) => (
+      <div>
+        <strong>{platform.name}</strong>
+        <span>{platform.status}</span>
+      </div>
+    ))}
+  </div>
+
+  <div class="promo-update__history">
+    <h3>Verification history</h3>
+    <ol>
+      {promoStatus.history.map((entry) => (
+        <li>
+          <time datetime={entry.iso}>{entry.label}</time>
+          <span>{entry.scope}</span>
+          <strong>{entry.result}</strong>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

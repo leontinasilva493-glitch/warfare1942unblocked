@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import StatusPanel from '../../components/StatusPanel.astro';
+import PromoUpdateStatus from '../../components/PromoUpdateStatus.astro';
 import { site } from '../../data/site.mjs';
+import { promoStatus } from '../../data/promo-status.mjs';
 
 const title = 'Warfare 1942 Promo Codes: Any Working Codes? (August 2026)';
 const description = 'Check the current Warfare 1942 promo code status, verification method, version compatibility, and what to inspect before trusting a code list.';
@@ -15,7 +16,7 @@ const schema = {
       name: 'Are there any working Warfare 1942 promo codes?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: `No active Warfare 1942 promo code has been independently verified for the web or current Android version as of ${site.verifiedDate}.`
+        text: `No active Warfare 1942 promo code has been independently verified for the web or current Android version as of ${promoStatus.lastChecked.label}.`
       }
     },
     {
@@ -42,12 +43,11 @@ const schema = {
 
   <section class="section">
     <div class="shell">
-      <p class="callout"><strong>Quick answer:</strong> There are 0 independently verified active Warfare 1942 promo codes for the web or current Android version as of <time datetime={site.verifiedIso}>{site.verifiedDate}</time>.</p>
-      <StatusPanel title="No independently verified active codes" status="0 verified active codes" detail="No code has passed this guide's publication standard for the web or current Android version." />
+      <PromoUpdateStatus />
       <div class="section-heading">
         <span class="eyebrow">Version-specific answer</span>
         <h2>Code status by Warfare 1942 version</h2>
-        <p>Last checked <time datetime={site.verifiedIso}>{site.verifiedDate}</time>. A result for one build does not automatically apply to another.</p>
+        <p>Last checked <time datetime={promoStatus.lastChecked.iso}>{promoStatus.lastChecked.shortLabel}</time>. A result for one build does not automatically apply to another.</p>
       </div>
       <div class="content-grid">
         <article class="content-card"><span class="eyebrow">Web build</span><h3>No verified active codes</h3><p>No stable redemption field or successful code result has been independently documented in the distributed browser build.</p></article>

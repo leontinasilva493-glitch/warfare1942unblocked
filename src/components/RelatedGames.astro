@@ -1,0 +1,40 @@
+---
+import { relatedGames } from '../data/related-games.mjs';
+---
+
+<section class="related-games" aria-labelledby="related-games-title">
+  <div class="related-games__heading">
+    <div>
+      <span class="eyebrow">Keep playing</span>
+      <h2 id="related-games-title">More games like this</h2>
+    </div>
+    <p>These games open on the external provider. They are recommendations, not Warfare 1942 versions.</p>
+  </div>
+  <div class="related-games__track">
+    {relatedGames.map((game) => (
+      <a
+        class="related-game-card"
+        href={game.href}
+        target="_blank"
+        rel="noopener"
+        data-related-game={game.title}
+      >
+        <img
+          src={game.image}
+          alt={game.imageAlt}
+          width="240"
+          height="135"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        />
+        <span class="related-game-card__body">
+          <span class="related-game-card__meta">External play <span aria-hidden="true">↗</span></span>
+          <strong>{game.title}</strong>
+          <span class="related-game-card__tags">
+            {game.tags.map((tag) => <span>{tag}</span>)}
+          </span>
+        </span>
+      </a>
+    ))}
+  </div>
+</section>

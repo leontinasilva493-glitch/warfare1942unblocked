@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { site } from '../../data/site.mjs';
 
 const title = 'Privacy Policy | Warfare 1942 Guide';
 const description = 'Learn what Warfare 1942 Guide stores locally, how the third-party game iframe works, and which external services receive requests.';
+const policyUpdated = { iso: '2026-08-08', label: 'August 8, 2026' };
 ---
 
 <BaseLayout title={title} description={description} path="/privacy/">
@@ -13,7 +13,7 @@ const description = 'Learn what Warfare 1942 Guide stores locally, how the third
       <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Privacy', href: '/privacy/' }]} />
       <span class="eyebrow">Trust & disclosure</span>
       <h1>Privacy Policy</h1>
-      <p class="page-hero__lede">Effective <time datetime={site.verifiedIso}>{site.verifiedDate}</time>. This page describes the static site as currently built, including the advertising delivered inside its third-party game player.</p>
+      <p class="page-hero__lede">Effective <time datetime={policyUpdated.iso}>{policyUpdated.label}</time>. This page describes the static site as currently built, including the advertising delivered inside its third-party game player.</p>
     </div>
   </header>
 
@@ -29,7 +29,7 @@ const description = 'Learn what Warfare 1942 Guide stores locally, how the third
       <p>The Warfare 1942 player is loaded from <code>www.gamezhero.com</code> through its public embed page. Gamezhero then loads the game client and advertising services from GameDistribution and its partners. Opening or interacting with that frame sends your browser request, IP address, user-agent information, and related technical data to those providers. Their cookies, advertisements, or telemetry are governed by their own policies.</p>
 
       <h2>External links</h2>
-      <p>Links may open CrazyGames, Google Play, Gamezhero, GameDistribution, or GitHub. Those services receive the normal information associated with a direct web request and apply their own privacy terms.</p>
+      <p>Related-game thumbnails are requested from the Gamezhero image CDN when the recommendation section loads. That request can expose your IP address, user-agent information, and related technical data to Gamezhero. Links may also open CrazyGames, Google Play, Gamezhero, GameDistribution, or GitHub; those services receive the normal information associated with a direct web request and apply their own privacy terms.</p>
 
       <h2>Browser permissions</h2>
       <p>The iframe is allowed to request autoplay, fullscreen, and gamepad capabilities needed by browser game features. Your browser remains responsible for permission prompts and enforcement.</p>

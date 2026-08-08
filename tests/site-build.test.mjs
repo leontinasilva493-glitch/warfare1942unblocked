@@ -104,6 +104,40 @@ test('promo-code page gives a direct query answer and exposes it as an FAQ', () 
   assert.match(html, /Are there any working Warfare 1942 promo codes/i);
 });
 
+test('both player pages render three external related-game recommendations', () => {
+  for (const file of ['dist/index.html', 'dist/unblocked/index.html']) {
+    const html = readFileSync(file, 'utf8');
+    assert.match(html, /More games like this/i, file);
+    assert.match(html, /Fields of Fury IO/i, file);
+    assert.match(html, /Pixel Warfare IO/i, file);
+    assert.match(html, /Narrow One/i, file);
+    assert.equal((html.match(/data-related-game=/g) ?? []).length, 3, file);
+    assert.match(html, /External play/i, file);
+    assert.match(html, /target="_blank"/i, file);
+    assert.match(html, /rel="noopener"/i, file);
+    assert.doesNotMatch(html, /href="\/games\//i, file);
+  }
+});
+
+test('privacy page discloses third-party related-game thumbnail requests', () => {
+  const html = readFileSync('dist/privacy/index.html', 'utf8');
+  assert.match(html, /<time datetime="2026-08-08">August 8, 2026<\/time>/i);
+  assert.match(html, /related-game thumbnails/i);
+  assert.match(html, /Gamezhero image CDN/i);
+  assert.match(html, /IP address.*user-agent/is);
+});
+
+test('promo-code page exposes a truthful Friday verification cadence', () => {
+  const html = readFileSync('dist/promo-codes/index.html', 'utf8');
+  assert.match(html, /Checked every Friday/i);
+  assert.match(html, /Last verified/i);
+  assert.match(html, /<time datetime="2026-08-07">Friday, August 7, 2026<\/time>/i);
+  assert.match(html, /Next scheduled check/i);
+  assert.match(html, /<time datetime="2026-08-14">Friday, August 14, 2026<\/time>/i);
+  assert.match(html, /Verification history/i);
+  assert.match(html, /Web and Android reviewed/i);
+});
+
 test('how-to-play page answers the Wardogs key query for the web build', () => {
   const html = readFileSync('dist/how-to-play/index.html', 'utf8');
   assert.match(html, /What is the Wardogs key in Warfare 1942/i);

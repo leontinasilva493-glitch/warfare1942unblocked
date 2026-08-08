@@ -70,3 +70,15 @@ The screenshot does not show clicks, impressions, CTR, position, country, device
 - Mod-APK searchers want a modified Android package or the benefits commonly claimed for one. The download route now answers the exact query, explains that no official or independently verified mod APK is offered, and directs users to the verified Google Play listing or browser build.
 
 No new route was created because each query already has a strong intent match among the existing pages. External search and page-retrieval services were unavailable during this update, so the shared source-verification date was not advanced and no new third-party claims were added.
+
+## Related-game retention review (2026-08-08)
+
+Three public Gamezhero listings were reviewed as closely related browser-action candidates:
+
+- Fields of Fury IO: `https://www.gamezhero.com/games/fieldsoffuryio`
+- Pixel Warfare IO: `https://www.gamezhero.com/games/pixelwarfareio`
+- Narrow One: `https://www.gamezhero.com/games/narrow-one`
+
+Each listing exposes a public provider page and embed wrapper. Browser QA reached the provider's advertising/start flow, but did not complete a reliable launch of the actual game client; one attempt was redirected into an unrelated advertisement and Cloudflare challenge. None of the three therefore passes the evidence gate for a first-party playable or indexable page on this site.
+
+The conservative implementation renders them only as clearly labelled external recommendations below the existing Warfare 1942 player. Links open the public provider pages in a new tab, Clarity records the shared `related_game_click` event, and no `/games/` routes or sitemap entries were created.

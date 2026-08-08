@@ -50,16 +50,24 @@ test('sitemap dates reflect the pages refreshed for current search intent', () =
   const sitemap = readFileSync('public/sitemap.xml', 'utf8');
   for (const path of ['', 'unblocked/']) {
     assert.ok(
-      sitemap.includes(`<loc>${domain}/${path}</loc><lastmod>2026-08-07</lastmod>`),
+      sitemap.includes(`<loc>${domain}/${path}</loc><lastmod>2026-08-08</lastmod>`),
       `sitemap date is stale for /${path}`
     );
   }
-  for (const path of ['promo-codes/', 'download/', 'how-to-play/']) {
+  for (const path of ['promo-codes/', 'download/', 'how-to-play/', 'privacy/']) {
     assert.ok(
       sitemap.includes(`<loc>${domain}/${path}</loc><lastmod>2026-08-08</lastmod>`),
       `sitemap date is stale for /${path}`
     );
   }
+});
+
+test('external related-game clicks are instrumented without thin internal routes', () => {
+  const script = readFileSync('public/scripts/site.js', 'utf8');
+  const sitemap = readFileSync('public/sitemap.xml', 'utf8');
+  assert.match(script, /data-related-game/);
+  assert.match(script, /related_game_click/);
+  assert.doesNotMatch(sitemap, /\/games\//i);
 });
 
 test('Astro inline and external scripts declare inline handling explicitly', () => {
