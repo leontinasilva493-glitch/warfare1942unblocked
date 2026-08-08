@@ -5,10 +5,24 @@ import VersionTable from '../../components/VersionTable.astro';
 import { site } from '../../data/site.mjs';
 
 const title = 'Warfare 1942 Download for PC & Android – Official Links';
-const description = 'Use safe Warfare 1942 browser and Android links. Compare the current app with a legacy Android identity and avoid unverified APK or PC downloads.';
+const description = 'Use safe Warfare 1942 browser and Android links, identify the official app, and understand why unverified mod APK downloads are risky.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is there an official Warfare 1942 mod APK?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No official or independently verified Warfare 1942 mod APK is provided by this guide. Use the browser build or the verified Google Play listing instead.'
+      }
+    }
+  ]
+};
 ---
 
-<BaseLayout title={title} description={description} path="/download/">
+<BaseLayout title={title} description={description} path="/download/" schema={schema}>
   <header class="page-hero">
     <div class="shell">
       <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Download', href: '/download/' }]} />
@@ -48,6 +62,15 @@ const description = 'Use safe Warfare 1942 browser and Android links. Compare th
         <p>Matching names do not prove that two listings share a developer, account system, progress, purchases, or promo codes.</p>
       </div>
       <VersionTable />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell prose">
+      <span class="eyebrow">Modified download answer</span>
+      <h2>Is there an official Warfare 1942 mod APK?</h2>
+      <p><strong>No official or independently verified Warfare 1942 mod APK is available from this guide.</strong> “Unlimited money,” “unlocked,” or “menu mod” claims describe third-party modified packages, not the verified Google Play release.</p>
+      <p>A modified APK can change the app signature, request unexpected permissions, expose an account, or stop working after an update. For Android, use the <a href={site.googlePlayUrl} target="_blank" rel="noopener">verified Google Play listing</a>. On desktop, use the <a href="/unblocked/">browser version</a> without installing an APK.</p>
     </div>
   </section>
 

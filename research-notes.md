@@ -54,3 +54,19 @@ Observed on 2026-08-06:
 - Permanent third-party iframe availability on the production domain.
 
 These unknowns are intentionally not presented as confirmed facts on the public pages.
+
+## GSC query-intent update (2026-08-08)
+
+The user supplied a Google Search Console screenshot showing these hot queries:
+
+- `warfare 1942 promo code`
+- `wardogs key`
+- `warfare 1942 mod apk`
+
+The screenshot does not show clicks, impressions, CTR, position, country, device, or landing-page dimensions, so it supports query discovery but not a ranking or traffic-growth claim.
+
+- Promo-code searchers want a current working-code answer, redemption location, reward, and version compatibility. The existing promo-code route now gives the evidence-bounded zero-code answer first and exposes matching FAQ data.
+- `wardogs key` is treated as a control query because the recorded distributor controls map the web build's war-dog ability to `U`. The guide explicitly distinguishes that binding from a promo or activation key and does not extend it to Android controls.
+- Mod-APK searchers want a modified Android package or the benefits commonly claimed for one. The download route now answers the exact query, explains that no official or independently verified mod APK is offered, and directs users to the verified Google Play listing or browser build.
+
+No new route was created because each query already has a strong intent match among the existing pages. External search and page-retrieval services were unavailable during this update, so the shared source-verification date was not advanced and no new third-party claims were added.

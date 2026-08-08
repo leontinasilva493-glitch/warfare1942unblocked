@@ -95,3 +95,27 @@ test('promo-code page gives dated web and Android status answers', () => {
   assert.match(html, /No independently verified active codes/i);
   assert.match(html, /<time datetime="2026-08-07">August 7, 2026<\/time>/i);
 });
+
+test('promo-code page gives a direct query answer and exposes it as an FAQ', () => {
+  const html = readFileSync('dist/promo-codes/index.html', 'utf8');
+  assert.match(html, /Quick answer/i);
+  assert.match(html, /0 independently verified active Warfare 1942 promo codes/i);
+  assert.match(html, /"@type":"FAQPage"/i);
+  assert.match(html, /Are there any working Warfare 1942 promo codes/i);
+});
+
+test('how-to-play page answers the Wardogs key query for the web build', () => {
+  const html = readFileSync('dist/how-to-play/index.html', 'utf8');
+  assert.match(html, /What is the Wardogs key in Warfare 1942/i);
+  assert.match(html, /press <kbd>U<\/kbd>/i);
+  assert.match(html, /published web controls/i);
+  assert.match(html, /not a promo code or activation key/i);
+});
+
+test('download page answers mod APK intent without offering an APK file', () => {
+  const html = readFileSync('dist/download/index.html', 'utf8');
+  assert.match(html, /Is there an official Warfare 1942 mod APK/i);
+  assert.match(html, /no official or independently verified Warfare 1942 mod APK/i);
+  assert.match(html, /href="https:\/\/play\.google\.com\/store\/apps\/details\?id=com\.warfare\.ww2\.online"/i);
+  assert.doesNotMatch(html, /href="[^"]+\.apk(?:[?#][^"]*)?"/i);
+});

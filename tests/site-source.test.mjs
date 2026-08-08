@@ -48,9 +48,15 @@ test('crawl and deployment files target the production domain', () => {
 
 test('sitemap dates reflect the pages refreshed for current search intent', () => {
   const sitemap = readFileSync('public/sitemap.xml', 'utf8');
-  for (const path of ['', 'promo-codes/', 'download/', 'unblocked/']) {
+  for (const path of ['', 'unblocked/']) {
     assert.ok(
       sitemap.includes(`<loc>${domain}/${path}</loc><lastmod>2026-08-07</lastmod>`),
+      `sitemap date is stale for /${path}`
+    );
+  }
+  for (const path of ['promo-codes/', 'download/', 'how-to-play/']) {
+    assert.ok(
+      sitemap.includes(`<loc>${domain}/${path}</loc><lastmod>2026-08-08</lastmod>`),
       `sitemap date is stale for /${path}`
     );
   }

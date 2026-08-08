@@ -5,9 +5,23 @@ import ControlsGrid from '../../components/ControlsGrid.astro';
 
 const title = 'How to Play Warfare 1942: Controls, Modes & Beginner Tips';
 const description = 'Learn the published Warfare 1942 browser controls, a fast first-match setup, practical shooter fundamentals, and common loading fixes.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is the Wardogs key in Warfare 1942?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'For the published web controls, press U to use the war dog ability. Check the current in-game bindings because another release may differ.'
+      }
+    }
+  ]
+};
 ---
 
-<BaseLayout title={title} description={description} path="/how-to-play/">
+<BaseLayout title={title} description={description} path="/how-to-play/" schema={schema}>
   <header class="page-hero">
     <div class="shell">
       <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'How to Play', href: '/how-to-play/' }]} />
@@ -31,6 +45,15 @@ const description = 'Learn the published Warfare 1942 browser controls, a fast f
         </ol>
       </div>
       <img class="about-grid__image" src="/images/about-battlefield.webp" width="460" height="420" alt="Soldier advancing past a tank in a smoky battlefield" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell prose">
+      <span class="eyebrow">Direct control answer</span>
+      <h2>What is the Wardogs key in Warfare 1942?</h2>
+      <p>For the published web controls, press <kbd>U</kbd> to use the war dog ability. “Wardogs key” refers to this keyboard binding, not a promo code or activation key.</p>
+      <p>Open the current build's settings before a match to confirm the binding. Android uses on-screen controls, and another web release may map the companion ability differently.</p>
     </div>
   </section>
 

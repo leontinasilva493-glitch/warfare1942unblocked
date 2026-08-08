@@ -6,9 +6,31 @@ import { site } from '../../data/site.mjs';
 
 const title = 'Warfare 1942 Promo Codes: Any Working Codes? (August 2026)';
 const description = 'Check the current Warfare 1942 promo code status, verification method, version compatibility, and what to inspect before trusting a code list.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Are there any working Warfare 1942 promo codes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `No active Warfare 1942 promo code has been independently verified for the web or current Android version as of ${site.verifiedDate}.`
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Where do I redeem a Warfare 1942 promo code?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A stable redemption menu has not been independently documented across the current Warfare 1942 versions, so version-less redemption instructions should be treated as unverified.'
+      }
+    }
+  ]
+};
 ---
 
-<BaseLayout title={title} description={description} path="/promo-codes/">
+<BaseLayout title={title} description={description} path="/promo-codes/" schema={schema}>
   <header class="page-hero">
     <div class="shell">
       <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Promo Codes', href: '/promo-codes/' }]} />
@@ -20,6 +42,7 @@ const description = 'Check the current Warfare 1942 promo code status, verificat
 
   <section class="section">
     <div class="shell">
+      <p class="callout"><strong>Quick answer:</strong> There are 0 independently verified active Warfare 1942 promo codes for the web or current Android version as of <time datetime={site.verifiedIso}>{site.verifiedDate}</time>.</p>
       <StatusPanel title="No independently verified active codes" status="0 verified active codes" detail="No code has passed this guide's publication standard for the web or current Android version." />
       <div class="section-heading">
         <span class="eyebrow">Version-specific answer</span>
