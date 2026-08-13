@@ -6,6 +6,7 @@ import { site } from '../../data/site.mjs';
 
 const title = 'Warfare 1942 Unblocked – Play Online Without Download';
 const description = 'Play the Warfare 1942 online shooter without a PC download, use fullscreen mode, and get loading help plus a CrazyGames fallback.';
+const y8Url = 'https://www.y8.com/games/warfare_1942';
 ---
 
 <BaseLayout title={title} description={description} path="/unblocked/">
@@ -20,7 +21,9 @@ const description = 'Play the Warfare 1942 online shooter without a PC download,
 
   <section class="section">
     <div class="shell">
-      <GamePlayer compact={true} />
+      <div id="play-online-here">
+        <GamePlayer compact={true} />
+      </div>
       <div class="section-heading">
         <span class="eyebrow">Play-now answer</span>
         <h2>Warfare 1942 online quick facts</h2>
@@ -31,6 +34,33 @@ const description = 'Play the Warfare 1942 online shooter without a PC download,
         <div class="stat-card"><strong>Free</strong><span>No PC installer here</span></div>
         <div class="stat-card"><strong>WASD</strong><span>Keyboard and mouse</span></div>
         <div class="stat-card"><strong>3rd party</strong><span>Provider-controlled loading</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Provider choices</span>
+        <h2>Where can I play Warfare 1942 online?</h2>
+        <p>Start with the embedded build on this site, then compare external providers if you need a different launch flow. Availability and device support can vary by provider.</p>
+      </div>
+      <div class="content-grid">
+        <article class="content-card">
+          <span class="eyebrow">This site</span>
+          <h3><a href="#play-online-here">Use the embedded build above</a></h3>
+          <p>This page keeps the browser frame, loading notes, fullscreen reminder, and the same evidence caveats in one place.</p>
+        </article>
+        <article class="content-card">
+          <span class="eyebrow">Y8</span>
+          <h3><a href={y8Url} target="_blank" rel="noopener">Open Warfare 1942 on Y8</a></h3>
+          <p>Y8 is the desktop choice when you want keyboard and mouse controls in a separate provider tab.</p>
+        </article>
+        <article class="content-card">
+          <span class="eyebrow">CrazyGames</span>
+          <h3><a href={site.crazyGamesUrl} target="_blank" rel="noopener">Open the CrazyGames listing</a></h3>
+          <p>Use CrazyGames as another browser option if the embedded frame or another provider is unavailable on your device.</p>
+        </article>
       </div>
     </div>
   </section>

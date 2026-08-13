@@ -70,3 +70,49 @@ The screenshot does not show clicks, impressions, CTR, position, country, device
 - Mod-APK searchers want a modified Android package or the benefits commonly claimed for one. The download route now answers the exact query, explains that no official or independently verified mod APK is offered, and directs users to the verified Google Play listing or browser build.
 
 No new route was created because each query already has a strong intent match among the existing pages. External search and page-retrieval services were unavailable during this update, so the shared source-verification date was not advanced and no new third-party claims were added.
+
+## Related-game retention review (2026-08-08)
+
+Three public Gamezhero listings were reviewed as closely related browser-action candidates:
+
+- Fields of Fury IO: `https://www.gamezhero.com/games/fieldsoffuryio`
+- Pixel Warfare IO: `https://www.gamezhero.com/games/pixelwarfareio`
+- Narrow One: `https://www.gamezhero.com/games/narrow-one`
+
+Each listing exposes a public provider page and embed wrapper. Browser QA reached the provider's advertising/start flow, but did not complete a reliable launch of the actual game client; one attempt was redirected into an unrelated advertisement and Cloudflare challenge. None of the three therefore passes the evidence gate for a first-party playable or indexable page on this site.
+
+The conservative implementation renders them only as clearly labelled external recommendations below the existing Warfare 1942 player. Links open the public provider pages in a new tab, Clarity records the shared `related_game_click` event, and no `/games/` routes or sitemap entries were created.
+
+## Google autocomplete intent review (2026-08-13)
+
+The user supplied a Google autocomplete screenshot for `warfare 1942` showing these associations:
+
+- `warfare 1942 promo code`
+- `warfare 1942 unblocked`
+- `warfare 1942 game`
+- `warfare 1942 armor games`
+- `warfare 1942 online`
+- `warfare 1942 game download`
+- `warfare 1942 online shooter`
+- `y8 warfare 1942`
+- `modern warfare 1942`
+
+Autocomplete associations are query-discovery evidence, not search-volume, ranking, click, or conversion evidence. The terms were consolidated by user task instead of creating one URL per phrase:
+
+- generic game identity -> homepage
+- immediate browser play, unblocked, and provider choice -> `/unblocked/`
+- official installation choice -> `/download/`
+- code status and redemption uncertainty -> `/promo-codes/`
+- controls -> `/how-to-play/`
+- same-name confusion -> a homepage comparison, not a thin new route
+
+Public-source checks on 2026-08-13 found:
+
+- Y8 has a public Warfare 1942 listing at `https://www.y8.com/games/warfare_1942`. Its visible FAQ describes free browser play and desktop keyboard/mouse use. This supports an external provider option on `/unblocked/`, not an internal `/y8/` doorway page.
+- Armor Games has public Warfare 1917 and Warfare 1944 listings at `https://armorgames.com/play/2267/warfare-1917` and `https://armorgames.com/play/4071/warfare-1944`. Both are strategy titles distinct from the current Warfare 1942 shooter. The `armor games` autocomplete association is handled as disambiguation rather than a claim that Warfare 1942 is an Armor Games title.
+- `Battlefield 1942` is documented as an Electronic Arts/DICE Battlefield-series title at `https://en.wikipedia.org/wiki/Battlefield_1942`; it is not another name for the Fahrenheit Dev browser shooter. The homepage mentions it only to prevent same-number title confusion.
+- Google Play exposes `Supremacy: Call of War 1942` under package `com.bytro.callofwar1942` at `https://play.google.com/store/apps/details?id=com.bytro.callofwar1942`. Its listing identifies a nation-level strategy/wargame product from Stillfront Supremacy GmbH, not this site's third-person shooter. The homepage keeps the names separate without claiming that the autocomplete screenshot measured demand for either game.
+- CrazyGames continues to expose `https://www.crazygames.com/game/warfare-1942-riz` as an external play fallback.
+- Google Play continues to resolve `com.warfare.ww2.online` as `Warfare 1942: Online Shooter`. Cross-platform account, progress, purchase, and code compatibility remain unverified.
+
+No `/y8/`, `/online-shooter/`, `/armor-games/`, or other phrase-matching route is approved by this review. A future comparison route requires sustained GSC evidence and enough independently sourced detail to exceed the homepage comparison.

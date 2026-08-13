@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import StatusPanel from '../../components/StatusPanel.astro';
+import PromoUpdateStatus from '../../components/PromoUpdateStatus.astro';
 import { site } from '../../data/site.mjs';
+import { promoStatus } from '../../data/promo-status.mjs';
 
-const title = 'Warfare 1942 Promo Codes: Any Working Codes? (August 2026)';
+const title = 'Warfare 1942 Promo Codes & Current Status';
 const description = 'Check the current Warfare 1942 promo code status, verification method, version compatibility, and what to inspect before trusting a code list.';
 const schema = {
   '@context': 'https://schema.org',
@@ -15,7 +16,7 @@ const schema = {
       name: 'Are there any working Warfare 1942 promo codes?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: `No active Warfare 1942 promo code has been independently verified for the web or current Android version as of ${site.verifiedDate}.`
+        text: `No active Warfare 1942 promo code has been independently verified for the web or current Android version as of ${promoStatus.lastChecked.label}.`
       }
     },
     {
@@ -35,19 +36,19 @@ const schema = {
     <div class="shell">
       <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Promo Codes', href: '/promo-codes/' }]} />
       <span class="eyebrow">Code intelligence</span>
-      <h1>Warfare 1942 Promo Codes: Are Any Codes Working?</h1>
+      <h1>Warfare 1942 Promo Codes &amp; Current Status</h1>
       <p class="page-hero__lede">A code belongs on this page only after its source, platform, reward, and test result can be recorded. Empty space is better than a fabricated reward.</p>
+      <p class="page-hero__lede">If you searched for the “Wardogs key,” that is the published <a href="/how-to-play/">keyboard control answer</a>, not a promo code.</p>
     </div>
   </header>
 
   <section class="section">
     <div class="shell">
-      <p class="callout"><strong>Quick answer:</strong> There are 0 independently verified active Warfare 1942 promo codes for the web or current Android version as of <time datetime={site.verifiedIso}>{site.verifiedDate}</time>.</p>
-      <StatusPanel title="No independently verified active codes" status="0 verified active codes" detail="No code has passed this guide's publication standard for the web or current Android version." />
+      <PromoUpdateStatus />
       <div class="section-heading">
         <span class="eyebrow">Version-specific answer</span>
         <h2>Code status by Warfare 1942 version</h2>
-        <p>Last checked <time datetime={site.verifiedIso}>{site.verifiedDate}</time>. A result for one build does not automatically apply to another.</p>
+        <p>Last checked <time datetime={promoStatus.lastChecked.iso}>{promoStatus.lastChecked.shortLabel}</time>. A result for one build does not automatically apply to another.</p>
       </div>
       <div class="content-grid">
         <article class="content-card"><span class="eyebrow">Web build</span><h3>No verified active codes</h3><p>No stable redemption field or successful code result has been independently documented in the distributed browser build.</p></article>
@@ -83,6 +84,7 @@ const schema = {
       <h2>No verified redemption steps yet</h2>
       <p>We have not independently documented a stable code-redemption menu for every Warfare 1942 version. For that reason, this page does not publish guessed menu paths such as “Settings → Gift Code.” If the current build exposes a code field, its exact location and platform still need a recorded test.</p>
       <div class="callout">The web build and Android app may not share accounts, events, rewards, or code systems. Treat a version-less code claim as unverified.</div>
+      <p>The phrase “Wardogs key” does not identify a redeemable code on the current evidence. It refers to the web-control binding documented in the <a href="/how-to-play/">how-to-play guide</a>.</p>
 
       <h2>Why a Warfare 1942 code may fail</h2>
       <ul>

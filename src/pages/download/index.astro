@@ -33,24 +33,40 @@ const schema = {
   </header>
 
   <section class="section">
-    <div class="shell content-grid">
-      <article class="content-card">
-        <span class="eyebrow">Windows & Mac</span>
-        <h2>Play in your browser</h2>
-        <p>The web edition does not require an EXE, DMG, or desktop launcher from this site.</p>
-        <a class="button button--gold" href="/unblocked/">Play in browser</a>
-      </article>
-      <article class="content-card">
-        <span class="eyebrow">Current Android</span>
-        <h2>Use Google Play</h2>
-        <p>Listing checked <time datetime={site.verifiedIso}>{site.verifiedDate}</time>: Mosaic Games LLC, package <code>com.warfare.ww2.online</code>.</p>
-        <a class="button button--gold" href={site.googlePlayUrl} target="_blank" rel="noopener">Open Google Play</a>
-      </article>
-      <article class="content-card">
-        <span class="eyebrow">iPhone & iPad</span>
-        <h2>Identity not confirmed</h2>
-        <p>A matching App Store listing is not independently verified, so no iOS download button is provided.</p>
-      </article>
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Platform decision</span>
+        <h2>Pick the verified path for your device</h2>
+        <p>Use this quick comparison first, then continue to the version and safety details below.</p>
+      </div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Warfare 1942 platform options">
+        <table class="version-table">
+          <thead>
+            <tr>
+              <th scope="col">Device</th>
+              <th scope="col">Verified option</th>
+              <th scope="col">Current status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Windows &amp; Mac</th>
+              <td><a href="/unblocked/">Play in browser</a></td>
+              <td>The web edition does not require an EXE, DMG, or desktop launcher from this site.</td>
+            </tr>
+            <tr>
+              <th scope="row">Android</th>
+              <td><a href={site.googlePlayUrl} target="_blank" rel="noopener">Google Play</a></td>
+              <td>Listing checked <time datetime={site.verifiedIso}>{site.verifiedDate}</time>: Mosaic Games LLC, package <code>com.warfare.ww2.online</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row">iPhone &amp; iPad</th>
+              <td>Not independently confirmed</td>
+              <td>A matching App Store listing is not independently verified, so no iOS download button is provided.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 

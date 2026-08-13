@@ -56,7 +56,7 @@ const schema = [
     <div class="shell">
       <div class="hero__status"><span class="status-dot" aria-hidden="true"></span> Play online · no PC install · free access</div>
       <h1>Warfare 1942</h1>
-      <p class="hero__lede">Warfare 1942 is a session-based World War II online shooter with infantry firefights, armored combat, customizable soldiers, and war-dog abilities.</p>
+      <p class="hero__lede">Warfare 1942 is a third-person World War II online shooter with infantry firefights, armored combat, customizable soldiers, and war-dog abilities. This guide tracks the current session-based World War II online shooter web build and its version caveats.</p>
       <div class="hero__actions">
         <a class="button button--gold" href="#play">Deploy to battle</a>
         <a class="button button--ghost" href="/promo-codes/">Check code status</a>
@@ -73,6 +73,33 @@ const schema = [
   <div id="play">
     <GamePlayer />
   </div>
+
+  <section class="section section--surface">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Choose your route</span>
+        <h2>Start with the task you need</h2>
+        <p>Use the homepage embed for a quick match, then jump straight to the page that matches your next question.</p>
+      </div>
+      <nav class="content-grid" aria-label="Choose your Warfare 1942 task">
+        <article class="content-card">
+          <span class="eyebrow">Play now</span>
+          <h3><a href="/unblocked/">Open the online-play guide</a></h3>
+          <p>Use the embedded build here, then compare browser providers, loading notes, and device guidance on the play-online page.</p>
+        </article>
+        <article class="content-card">
+          <span class="eyebrow">Code status</span>
+          <h3><a href="/promo-codes/">Check promo code verification</a></h3>
+          <p>See the current evidence status for rewards, gift-code claims, and anything still unconfirmed.</p>
+        </article>
+        <article class="content-card">
+          <span class="eyebrow">Download help</span>
+          <h3><a href="/download/">Review safe download options</a></h3>
+          <p>Compare the browser build with the current Android listing and avoid same-name installer confusion.</p>
+        </article>
+      </nav>
+    </div>
+  </section>
 
   <section id="controls" class="section section--surface">
     <div class="shell">
@@ -111,6 +138,38 @@ const schema = [
         <p>The browser build, current Android app, and older Android identity should not be treated as interchangeable. Account, progress, and code compatibility have not been independently confirmed across versions.</p>
       </div>
       <VersionTable />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Name check</span>
+        <h2>Which 1942 or Warfare game is this?</h2>
+        <p>Search results often mix unrelated games together. Use this quick comparison before following a same-name video, forum post, or install link.</p>
+      </div>
+      <div class="faq-grid">
+        <article class="faq-item">
+          <h3>Warfare 1942</h3>
+          <p>This site covers the browser shooter shown above plus the current identity notes for its same-name Android listing.</p>
+        </article>
+        <article class="faq-item">
+          <h3><a href={site.warfare1917Url} target="_blank" rel="noopener">Warfare 1917</a></h3>
+          <p>Warfare 1917 is a different game series entry. It is not the same Warfare 1942 shooter and should be treated as a separate game.</p>
+        </article>
+        <article class="faq-item">
+          <h3><a href={site.warfare1944Url} target="_blank" rel="noopener">Warfare 1944</a></h3>
+          <p>Warfare 1944 is also a different game series entry. Do not assume its guides, saves, or publisher pages apply to Warfare 1942.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Battlefield 1942</h3>
+          <p>Battlefield 1942 is a different game, not an alternate title or official version of Warfare 1942.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Call of War 1942</h3>
+          <p>Call of War 1942 points to a different game or shorthand search term, not to this Warfare 1942 page or its embedded build.</p>
+        </article>
+      </div>
     </div>
   </section>
 

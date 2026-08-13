@@ -63,6 +63,14 @@ document.querySelectorAll('[data-share-page]').forEach((button) => {
   });
 });
 
+document.querySelectorAll('[data-related-game]').forEach((link) => {
+  link.addEventListener('click', () => {
+    if (typeof window.clarity === 'function') {
+      window.clarity('event', 'related_game_click');
+    }
+  });
+});
+
 document.querySelectorAll('[data-save-page]').forEach((button) => {
   const storageKey = `warfare1942:saved:${window.location.pathname}`;
   let saved = false;

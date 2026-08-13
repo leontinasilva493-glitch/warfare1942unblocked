@@ -1,5 +1,6 @@
 ---
 import { site } from '../data/site.mjs';
+import RelatedGames from './RelatedGames.astro';
 const { compact = false } = Astro.props;
 ---
 
@@ -32,4 +33,5 @@ const { compact = false } = Astro.props;
     <p>The provider may show advertising and several start prompts before the game loads. If it never starts, your browser or network may be blocking the frame.</p>
     <a href={site.crazyGamesUrl} target="_blank" rel="noopener">Play on CrazyGames <span aria-hidden="true">↗</span></a>
   </div>
+  <RelatedGames />
 </section>

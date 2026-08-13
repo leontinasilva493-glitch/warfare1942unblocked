@@ -465,6 +465,105 @@ kbd {
   font-weight: 700;
 }
 
+.related-games {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--hairline);
+}
+
+.related-games__heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 18px;
+}
+
+.related-games__heading .eyebrow {
+  margin-bottom: 10px;
+}
+
+.related-games__heading h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.25rem);
+}
+
+.related-games__heading p {
+  max-width: 470px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: right;
+}
+
+.related-games__track {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.related-game-card {
+  display: grid;
+  overflow: hidden;
+  min-width: 0;
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  background: var(--card);
+  grid-template-columns: minmax(118px, 0.8fr) minmax(0, 1.2fr);
+  text-decoration: none;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.related-game-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(232, 194, 104, 0.58);
+  color: var(--text);
+}
+
+.related-game-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 128px;
+  object-fit: cover;
+}
+
+.related-game-card__body {
+  display: flex;
+  min-width: 0;
+  padding: 14px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.related-game-card__meta {
+  color: var(--gold);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.related-game-card__body > strong {
+  margin-top: 5px;
+  font-size: 0.94rem;
+  line-height: 1.25;
+}
+
+.related-game-card__tags {
+  display: flex;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.related-game-card__tags > span {
+  padding: 2px 6px;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.63rem;
+}
+
 .controls-grid {
   display: grid;
   gap: 12px;
@@ -668,6 +767,128 @@ kbd {
   color: var(--gold);
   font-size: 0.9rem;
   font-weight: 700;
+}
+
+.promo-update {
+  overflow: hidden;
+  margin-bottom: 48px;
+  border: 1px solid rgba(232, 194, 104, 0.38);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(232, 194, 104, 0.09), var(--surface) 58%);
+}
+
+.promo-update__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 30px;
+}
+
+.promo-update__heading h2 {
+  margin-bottom: 10px;
+}
+
+.promo-update__heading p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+}
+
+.promo-update__badge {
+  flex: none;
+  padding: 7px 11px;
+  border: 1px solid rgba(232, 194, 104, 0.4);
+  border-radius: 999px;
+  background: rgba(232, 194, 104, 0.1);
+  color: var(--gold);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.promo-update__schedule {
+  display: grid;
+  margin: 0;
+  border-block: 1px solid var(--hairline);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.promo-update__schedule div {
+  padding: 18px 30px;
+}
+
+.promo-update__schedule div + div {
+  border-left: 1px solid var(--hairline);
+}
+
+.promo-update__schedule dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.promo-update__schedule dd {
+  margin: 4px 0 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.promo-update__platforms {
+  display: grid;
+  padding: 24px 30px;
+  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.promo-update__platforms div {
+  padding: 16px;
+  border: 1px solid var(--hairline);
+  background: var(--card);
+}
+
+.promo-update__platforms strong,
+.promo-update__platforms span {
+  display: block;
+}
+
+.promo-update__platforms span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.promo-update__history {
+  padding: 0 30px 30px;
+}
+
+.promo-update__history h3 {
+  margin-bottom: 12px;
+}
+
+.promo-update__history ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.promo-update__history li {
+  display: grid;
+  padding: 14px 16px;
+  border-left: 2px solid var(--gold);
+  background: rgba(255, 255, 255, 0.025);
+  gap: 4px 18px;
+  grid-template-columns: minmax(200px, 0.9fr) 1.2fr 1fr;
+}
+
+.promo-update__history span {
+  color: var(--muted);
+}
+
+.promo-update__history strong {
+  color: var(--gold);
 }
 
 .content-grid {
@@ -1011,6 +1232,29 @@ kbd {
     font-size: 0.76rem;
   }
 
+  .related-games__heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .related-games__heading p {
+    text-align: left;
+  }
+
+  .related-games__track {
+    overflow-x: auto;
+    padding-bottom: 10px;
+    grid-auto-columns: minmax(270px, 84vw);
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .related-game-card {
+    scroll-snap-align: start;
+  }
+
   .controls-grid,
   .guide-grid,
   .content-grid,
@@ -1025,6 +1269,38 @@ kbd {
 
   .status-panel {
     padding: 22px;
+  }
+
+  .promo-update__heading {
+    align-items: flex-start;
+    padding: 22px;
+    flex-direction: column;
+  }
+
+  .promo-update__schedule,
+  .promo-update__platforms {
+    grid-template-columns: 1fr;
+  }
+
+  .promo-update__schedule div {
+    padding: 16px 22px;
+  }
+
+  .promo-update__schedule div + div {
+    border-top: 1px solid var(--hairline);
+    border-left: 0;
+  }
+
+  .promo-update__platforms {
+    padding: 22px;
+  }
+
+  .promo-update__history {
+    padding: 0 22px 22px;
+  }
+
+  .promo-update__history li {
+    grid-template-columns: 1fr;
   }
 
   .status-panel dl {
