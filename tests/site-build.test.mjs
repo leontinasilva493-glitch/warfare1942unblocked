@@ -10,6 +10,7 @@ const builtRoutes = new Map([
   ['/download/', 'dist/download/index.html'],
   ['/how-to-play/', 'dist/how-to-play/index.html'],
   ['/unblocked/', 'dist/unblocked/index.html'],
+  ['/chromebook/', 'dist/chromebook/index.html'],
   ['/privacy/', 'dist/privacy/index.html'],
   ['/contact/', 'dist/contact/index.html'],
   ['/404', 'dist/404.html']
@@ -38,8 +39,8 @@ test('built pages have unique metadata and self-canonical URLs', () => {
   }
 });
 
-test('home and unblocked routes render the playable embed with a CrazyGames fallback', () => {
-  for (const file of ['dist/index.html', 'dist/unblocked/index.html']) {
+test('playable routes render the public embed with a CrazyGames fallback', () => {
+  for (const file of ['dist/index.html', 'dist/unblocked/index.html', 'dist/chromebook/index.html']) {
     assert.ok(existsSync(file), `${file} must exist`);
     const html = readFileSync(file, 'utf8');
     assert.ok(html.includes(iframeUrl), `${file} missing iframe URL`);
@@ -137,10 +138,11 @@ test('promo-code page uses a durable title and separates the Wardogs control que
   assert.match(html, /href="\/how-to-play\/"/i);
 });
 
-test('both player pages render three external related-game recommendations', () => {
-  for (const file of ['dist/index.html', 'dist/unblocked/index.html']) {
+test('player pages render three external browser-war-game recommendations', () => {
+  for (const file of ['dist/index.html', 'dist/unblocked/index.html', 'dist/chromebook/index.html']) {
     const html = readFileSync(file, 'utf8');
-    assert.match(html, /More games like this/i, file);
+    assert.match(html, /More Browser War Games/i, file);
+    assert.doesNotMatch(html, /More games like this/i, file);
     assert.match(html, /Fields of Fury IO/i, file);
     assert.match(html, /Pixel Warfare IO/i, file);
     assert.match(html, /Narrow One/i, file);
@@ -186,6 +188,25 @@ test('how-to-play page distinguishes verified web keys from mobile controls', ()
   assert.match(html, /Web browser.*published keyboard bindings/is);
   assert.match(html, /Android.*control layout.*not independently documented/is);
   assert.match(html, /on-screen layout.*remain unverified/is);
+});
+
+test('how-to-play page identifies the covered browser shooter in search-facing copy', () => {
+  const html = readFileSync('dist/how-to-play/index.html', 'utf8');
+  assert.match(html, /<title>How to Play Warfare 1942 Browser Game:/i);
+  assert.match(html, /<h1[^>]*>How to Play Warfare 1942 Browser Game/i);
+  assert.match(html, /CrazyGames/i);
+  assert.match(html, /not Call of War or Battlefield 1942/i);
+});
+
+test('Chromebook page gives a scoped play path without promising policy bypasses', () => {
+  const html = readFileSync('dist/chromebook/index.html', 'utf8');
+  assert.match(html, /<title>Warfare 1942 on Chromebook:/i);
+  assert.match(html, /<h1[^>]*>Warfare 1942 on Chromebook/i);
+  assert.match(html, /no Windows or Mac installer/i);
+  assert.match(html, /managed Chromebook/i);
+  assert.match(html, /administrator.*network policy/is);
+  assert.match(html, /does not provide proxies, VPNs, or bypass methods/i);
+  assert.match(html, /href="\/"/i);
 });
 
 test('download page answers mod APK intent without offering an APK file', () => {

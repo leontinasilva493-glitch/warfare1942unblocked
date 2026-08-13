@@ -9,6 +9,7 @@ ROUTES = [
     "/download/",
     "/how-to-play/",
     "/unblocked/",
+    "/chromebook/",
     "/privacy/",
     "/contact/",
 ]
@@ -49,6 +50,14 @@ def assert_mobile_menu(page):
     assert page.locator("[data-primary-nav]").evaluate("node => node.classList.contains('is-open')")
 
 
+def assert_chromebook_page(page):
+    page.goto(f"{BASE_URL}/chromebook/", wait_until="domcontentloaded", timeout=60_000)
+    page.get_by_role("heading", name="Warfare 1942 on Chromebook: Play in Your Browser").wait_for(state="visible")
+    assert page.locator(f'iframe[src="{IFRAME_URL}"]').count() == 1
+    assert page.get_by_role("link", name="Back to the main guide").get_attribute("href") == "/"
+    assert page.get_by_text("This guide does not provide proxies, VPNs, or bypass methods.", exact=False).is_visible()
+
+
 def main():
     ARTIFACTS.mkdir(parents=True, exist_ok=True)
     first_party_errors = []
@@ -77,6 +86,8 @@ def main():
         assert_routes(page)
         assert_home_interactions(page)
         page.screenshot(path=str(ARTIFACTS / "home-desktop.png"), full_page=True)
+        assert_chromebook_page(page)
+        page.screenshot(path=str(ARTIFACTS / "chromebook-desktop.png"), full_page=True)
 
         response = page.goto(f"{BASE_URL}/route-that-does-not-exist", wait_until="domcontentloaded")
         assert response is not None and response.status == 404, "unknown route must return HTTP 404"
@@ -89,13 +100,17 @@ def main():
         overflow = mobile_page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
         assert overflow <= 1, f"mobile homepage has {overflow}px horizontal overflow"
         mobile_page.screenshot(path=str(ARTIFACTS / "home-mobile.png"), full_page=True)
+        assert_chromebook_page(mobile_page)
+        overflow = mobile_page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
+        assert overflow <= 1, f"mobile Chromebook page has {overflow}px horizontal overflow"
+        mobile_page.screenshot(path=str(ARTIFACTS / "chromebook-mobile.png"), full_page=True)
 
         mobile.close()
         desktop.close()
         browser.close()
 
     assert not first_party_errors, "First-party browser errors:\n" + "\n".join(first_party_errors)
-    print(f"Checked {len(ROUTES)} routes, 404 behavior, player iframe, save interaction, mobile menu, and overflow.")
+    print(f"Checked {len(ROUTES)} routes, 404 behavior, player iframe, save interaction, Chromebook page, mobile menu, and overflow.")
     print(f"Third-party console errors observed: {len(third_party_errors)}")
     for error in third_party_errors[:10]:
         print(f"THIRD_PARTY: {error}")

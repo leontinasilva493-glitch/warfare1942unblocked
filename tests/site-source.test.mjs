@@ -10,6 +10,7 @@ const sourcePages = [
   'src/pages/download/index.astro',
   'src/pages/how-to-play/index.astro',
   'src/pages/unblocked/index.astro',
+  'src/pages/chromebook/index.astro',
   'src/pages/privacy/index.astro',
   'src/pages/contact/index.astro',
   'src/pages/404.astro'
@@ -41,14 +42,14 @@ test('crawl and deployment files target the production domain', () => {
   }
   assert.ok(readFileSync('public/robots.txt', 'utf8').includes(`${domain}/sitemap.xml`));
   const sitemap = readFileSync('public/sitemap.xml', 'utf8');
-  for (const path of ['', 'promo-codes/', 'download/', 'how-to-play/', 'unblocked/', 'privacy/', 'contact/']) {
+  for (const path of ['', 'promo-codes/', 'download/', 'how-to-play/', 'unblocked/', 'chromebook/', 'privacy/', 'contact/']) {
     assert.ok(sitemap.includes(`<loc>${domain}/${path}</loc>`), `sitemap missing /${path}`);
   }
 });
 
 test('sitemap dates reflect the pages refreshed for current search intent', () => {
   const sitemap = readFileSync('public/sitemap.xml', 'utf8');
-  for (const path of ['', 'promo-codes/', 'download/', 'how-to-play/', 'unblocked/']) {
+  for (const path of ['', 'promo-codes/', 'download/', 'how-to-play/', 'unblocked/', 'chromebook/']) {
     assert.ok(
       sitemap.includes(`<loc>${domain}/${path}</loc><lastmod>2026-08-13</lastmod>`),
       `sitemap date is stale for /${path}`
@@ -69,7 +70,7 @@ test('external related-game clicks are instrumented without thin internal routes
 });
 
 test('autocomplete terms do not create thin phrase-match doorway routes', () => {
-  const rejectedRoutes = ['y8', 'online-shooter', 'armor-games', 'modern-warfare-1942'];
+  const rejectedRoutes = ['y8', 'online-shooter', 'armor-games', 'modern-warfare-1942', 'tips', 'cheats', 'weapons'];
   const sitemap = readFileSync('public/sitemap.xml', 'utf8');
   for (const route of rejectedRoutes) {
     assert.equal(existsSync(`src/pages/${route}/index.astro`), false, `/${route}/ must not become a thin source route`);

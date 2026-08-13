@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import GamePlayer from '../../components/GamePlayer.astro';
+
+const title = 'Warfare 1942 on Chromebook: Browser Play Guide';
+const description = 'Play the Warfare 1942 browser shooter on a compatible Chromebook, use fullscreen and keyboard controls, and understand managed-device limits.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Can I play Warfare 1942 on a Chromebook?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A compatible Chromebook can open the web player without a Windows or Mac installer. The game still depends on browser, hardware, third-party frame, and network support.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Warfare 1942 unblocked on every school Chromebook?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. A school administrator, content filter, or network policy can block this site or the third-party game frame.'
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} path="/chromebook/" schema={schema}>
+  <header class="page-hero">
+    <div class="shell">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Chromebook', href: '/chromebook/' }]} />
+      <span class="eyebrow">ChromeOS field guide</span>
+      <h1>Warfare 1942 on Chromebook: Play in Your Browser</h1>
+      <p class="page-hero__lede">Open the Warfare 1942 web shooter on a compatible Chromebook with no Windows or Mac installer. Browser access does not guarantee access on every managed school device or network.</p>
+      <div class="hero__actions">
+        <a class="button button--gold" href="#play-on-chromebook">Open the player</a>
+        <a class="button button--ghost" href="/">Back to the main guide</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section--surface">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Compatibility first</span>
+        <h2>What a Chromebook needs</h2>
+        <p>The game is delivered through a third-party browser frame. Actual performance and availability depend on the Chromebook, Chrome version, graphics support, memory, extensions, and network policy.</p>
+      </div>
+      <div class="stats-grid" aria-label="Warfare 1942 Chromebook requirements">
+        <div class="stat-card"><strong>Chrome</strong><span>Current browser recommended</span></div>
+        <div class="stat-card"><strong>WebGL</strong><span>Hardware acceleration needed</span></div>
+        <div class="stat-card"><strong>WASD</strong><span>Keyboard and mouse controls</span></div>
+        <div class="stat-card"><strong>Landscape</strong><span>More room for the game HUD</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="play-on-chromebook" class="section">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Browser deployment</span>
+        <h2>Play Warfare 1942 on Chromebook</h2>
+        <p>Use the embedded web build below. The provider may show advertising and more than one start prompt before the game client loads.</p>
+      </div>
+      <GamePlayer compact={true} />
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="shell about-grid">
+      <div>
+        <span class="eyebrow">Launch checklist</span>
+        <h2>How to start on ChromeOS</h2>
+        <ol class="numbered-list">
+          <li>Update ChromeOS if your device administrator allows updates, then close memory-heavy tabs.</li>
+          <li>Connect a mouse when possible and keep the Chromebook in landscape orientation.</li>
+          <li>Open this page and wait for the third-party frame to finish its launch sequence.</li>
+          <li>Use the Fullscreen button below the player; Chrome may display its own permission prompt.</li>
+          <li>Review the current in-game bindings before joining a match.</li>
+        </ol>
+      </div>
+      <div class="prose">
+        <span class="eyebrow">No local install</span>
+        <h2>Why there is no Chromebook download</h2>
+        <p>This page launches the browser build. It does not ask you to install a Windows EXE, a Mac DMG, or an Android APK.</p>
+        <p>That also means the game frame must load scripts and assets from third-party providers. An extension, browser setting, low-memory device, or network filter can still stop it.</p>
+        <p>For the published keyboard bindings, continue to the <a href="/how-to-play/">Warfare 1942 browser controls guide</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell prose">
+      <span class="eyebrow">Managed-device boundary</span>
+      <h2>If a school Chromebook blocks the game</h2>
+      <p>A managed Chromebook can enforce administrator settings, extension rules, site restrictions, and network policy. The main page may open while the third-party game frame remains blocked.</p>
+      <div class="callout callout--warning">This guide does not provide proxies, VPNs, or bypass methods. Follow your school or organization policy and ask the administrator when access is required for an approved use.</div>
+      <p>If the device is yours and the frame still will not load, use the troubleshooting steps on the <a href="/unblocked/">browser play page</a> or try the listed CrazyGames fallback.</p>
+    </div>
+  </section>
+</BaseLayout>
