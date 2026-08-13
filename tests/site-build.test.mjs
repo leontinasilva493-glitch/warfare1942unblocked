@@ -73,11 +73,29 @@ test('homepage answers the game identity and Armor Games confusion', () => {
   assert.match(html, /Warfare 1944/);
 });
 
+test('homepage routes generic visitors and disambiguates similarly named games', () => {
+  const html = readFileSync('dist/index.html', 'utf8');
+  assert.match(html, /aria-label="Choose your Warfare 1942 task"/i);
+  assert.match(html, /third-person World War II online shooter/i);
+  assert.match(html, /Battlefield 1942/i);
+  assert.match(html, /Call of War 1942/i);
+  assert.match(html, /different game series/i);
+});
+
 test('online page directly answers play-now and no-download intent', () => {
   const html = readFileSync('dist/unblocked/index.html', 'utf8');
   assert.match(html, /online shooter/i);
   assert.match(html, /without a PC download/i);
   assert.match(html, /Warfare 1942 online quick facts/i);
+});
+
+test('online page offers verified provider choices without promising network bypasses', () => {
+  const html = readFileSync('dist/unblocked/index.html', 'utf8');
+  assert.match(html, /Where can I play Warfare 1942 online/i);
+  assert.match(html, /href="https:\/\/www\.y8\.com\/games\/warfare_1942"/i);
+  assert.match(html, /Y8.*desktop.*keyboard.*mouse/is);
+  assert.match(html, /availability and device support can vary by provider/i);
+  assert.match(html, /does not provide proxies, VPN instructions/i);
 });
 
 test('download page distinguishes current, legacy, and unverified listings', () => {
@@ -86,6 +104,14 @@ test('download page distinguishes current, legacy, and unverified listings', () 
   assert.match(html, /com\.ww2\.shooter\.war\.games\.online/);
   assert.match(html, /no longer available on Google Play/i);
   assert.match(html, /App Store listing.*not independently verified/is);
+});
+
+test('download page gives an accessible platform decision before installation details', () => {
+  const html = readFileSync('dist/download/index.html', 'utf8');
+  assert.match(html, /aria-label="Warfare 1942 platform options"/i);
+  assert.match(html, /Windows.*Mac.*Play in browser/is);
+  assert.match(html, /Android.*Google Play/is);
+  assert.match(html, /iPhone.*iPad.*Not independently confirmed/is);
 });
 
 test('promo-code page gives dated web and Android status answers', () => {
@@ -102,6 +128,13 @@ test('promo-code page gives a direct query answer and exposes it as an FAQ', () 
   assert.match(html, /0 independently verified active Warfare 1942 promo codes/i);
   assert.match(html, /"@type":"FAQPage"/i);
   assert.match(html, /Are there any working Warfare 1942 promo codes/i);
+});
+
+test('promo-code page uses a durable title and separates the Wardogs control query', () => {
+  const html = readFileSync('dist/promo-codes/index.html', 'utf8');
+  assert.doesNotMatch(html, /<title>[^<]*(?:January|February|March|April|May|June|July|August|September|October|November|December) 20\d{2}/i);
+  assert.match(html, /Wardogs key.*keyboard control/is);
+  assert.match(html, /href="\/how-to-play\/"/i);
 });
 
 test('both player pages render three external related-game recommendations', () => {
@@ -144,6 +177,15 @@ test('how-to-play page answers the Wardogs key query for the web build', () => {
   assert.match(html, /press <kbd>U<\/kbd>/i);
   assert.match(html, /published web controls/i);
   assert.match(html, /not a promo code or activation key/i);
+});
+
+test('how-to-play page distinguishes verified web keys from mobile controls', () => {
+  const html = readFileSync('dist/how-to-play/index.html', 'utf8');
+  assert.doesNotMatch(html, /<title>[^<]*Modes/i);
+  assert.match(html, /aria-label="Warfare 1942 control differences"/i);
+  assert.match(html, /Web browser.*published keyboard bindings/is);
+  assert.match(html, /Android.*control layout.*not independently documented/is);
+  assert.match(html, /on-screen layout.*remain unverified/is);
 });
 
 test('download page answers mod APK intent without offering an APK file', () => {

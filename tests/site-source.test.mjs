@@ -48,18 +48,16 @@ test('crawl and deployment files target the production domain', () => {
 
 test('sitemap dates reflect the pages refreshed for current search intent', () => {
   const sitemap = readFileSync('public/sitemap.xml', 'utf8');
-  for (const path of ['', 'unblocked/']) {
+  for (const path of ['', 'promo-codes/', 'download/', 'how-to-play/', 'unblocked/']) {
     assert.ok(
-      sitemap.includes(`<loc>${domain}/${path}</loc><lastmod>2026-08-08</lastmod>`),
+      sitemap.includes(`<loc>${domain}/${path}</loc><lastmod>2026-08-13</lastmod>`),
       `sitemap date is stale for /${path}`
     );
   }
-  for (const path of ['promo-codes/', 'download/', 'how-to-play/', 'privacy/']) {
-    assert.ok(
-      sitemap.includes(`<loc>${domain}/${path}</loc><lastmod>2026-08-08</lastmod>`),
-      `sitemap date is stale for /${path}`
-    );
-  }
+  assert.ok(
+    sitemap.includes(`<loc>${domain}/privacy/</loc><lastmod>2026-08-08</lastmod>`),
+    'privacy lastmod should remain tied to its last substantive update'
+  );
 });
 
 test('external related-game clicks are instrumented without thin internal routes', () => {
@@ -68,6 +66,15 @@ test('external related-game clicks are instrumented without thin internal routes
   assert.match(script, /data-related-game/);
   assert.match(script, /related_game_click/);
   assert.doesNotMatch(sitemap, /\/games\//i);
+});
+
+test('autocomplete terms do not create thin phrase-match doorway routes', () => {
+  const rejectedRoutes = ['y8', 'online-shooter', 'armor-games', 'modern-warfare-1942'];
+  const sitemap = readFileSync('public/sitemap.xml', 'utf8');
+  for (const route of rejectedRoutes) {
+    assert.equal(existsSync(`src/pages/${route}/index.astro`), false, `/${route}/ must not become a thin source route`);
+    assert.doesNotMatch(sitemap, new RegExp(`/${route}/`, 'i'), `/${route}/ must not enter the sitemap`);
+  }
 });
 
 test('Astro inline and external scripts declare inline handling explicitly', () => {
