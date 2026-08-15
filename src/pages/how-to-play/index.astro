@@ -3,8 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import ControlsGrid from '../../components/ControlsGrid.astro';
 
-const title = 'How to Play Warfare 1942 Browser Game: Controls & Tips';
-const description = 'Learn the published controls and first-match fundamentals for the Warfare 1942 browser shooter distributed on CrazyGames and other web portals.';
+const title = 'How to Play Warfare 1942: Beginner Guide, Controls & Tips';
+const description = 'Use this Warfare 1942 beginner guide for published browser controls, a first-match checklist, practical gameplay tips, loading help, and a labelled gameplay video.';
+const gameplayVideoUrl = 'https://www.youtube.com/watch?v=8XhZIrXphYM';
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -16,6 +17,22 @@ const schema = {
         '@type': 'Answer',
         text: 'For the published web controls, press U to use the war dog ability. Check the current in-game bindings because another release may differ.'
       }
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Warfare 1942 suitable for beginners?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The browser build uses familiar keyboard and mouse shooter controls. New players should learn the current objective, use cover, check the map between fights, and confirm bindings before the first match.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Are the browser and Android controls the same?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No shared control layout has been independently verified. The keyboard bindings on this page apply to the distributed browser build, not automatically to Android.'
+      }
     }
   ]
 };
@@ -25,26 +42,61 @@ const schema = {
   <header class="page-hero">
     <div class="shell">
       <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'How to Play', href: '/how-to-play/' }]} />
-      <span class="eyebrow">Field manual</span>
-      <h1>How to Play Warfare 1942 Browser Game</h1>
-      <p class="page-hero__lede">This field manual covers the third-person browser shooter distributed on CrazyGames and other web portals—not Call of War or Battlefield 1942. Load the web build, confirm your current key bindings, and learn the basic combat loop before committing to a match.</p>
+      <span class="eyebrow">Beginner field manual</span>
+      <h1>Warfare 1942 Beginner Guide: How to Play</h1>
+      <p class="page-hero__lede">This guide covers the third-person browser shooter distributed on CrazyGames and other web portals—not Call of War or Battlefield 1942. Use it to get through your first match, understand the published keys, and separate verified controls from general guide advice.</p>
     </div>
   </header>
 
-  <section class="section">
+  <section class="section section--surface">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Choose your answer</span>
+        <h2>Warfare 1942 beginner guide contents</h2>
+      </div>
+      <nav class="content-grid" aria-label="Warfare 1942 beginner guide contents">
+        <article class="content-card"><span class="eyebrow">Start</span><h3><a href="#first-match">First-match checklist</a></h3><p>Move from browser loading to a safe first engagement.</p></article>
+        <article class="content-card"><span class="eyebrow">Controls</span><h3><a href="#controls">Keyboard and mouse keys</a></h3><p>Confirm movement, equipment, map, chat, and war-dog bindings.</p></article>
+        <article class="content-card"><span class="eyebrow">Improve</span><h3><a href="#beginner-tips">Beginner gameplay tips</a></h3><p>Use cover, information, and recovery time more deliberately.</p></article>
+      </nav>
+    </div>
+  </section>
+
+  <section id="first-match" class="section">
     <div class="shell about-grid">
       <div>
         <span class="eyebrow">60-second start</span>
-        <h2>From browser to battlefield</h2>
+        <h2>From browser to your first match</h2>
         <ol class="numbered-list">
-          <li>Open the <a href="/unblocked/">browser player</a> and allow the WebGL build to finish loading.</li>
-          <li>Use the in-game menu to review sensitivity, audio, quality, and current key bindings.</li>
-          <li>Choose the available match or training option shown by your release.</li>
-          <li>Move with cover, check the map, and learn the objective before chasing eliminations.</li>
-          <li>Use reloads, equipment, and companion abilities when you have space to recover.</li>
+          <li>Open the <a href="/unblocked/">browser player</a> and let the third-party WebGL build finish loading.</li>
+          <li>Review sensitivity, audio, quality, and the current key bindings before joining a match.</li>
+          <li>Choose only the match or training option actually shown by the release you loaded.</li>
+          <li>Identify the visible objective and scoring information before chasing eliminations.</li>
+          <li>Move between cover, check the map while safe, and keep a retreat route available.</li>
+          <li>After contact, reload, recover, and review equipment before starting the next fight.</li>
         </ol>
       </div>
       <img class="about-grid__image" src="/images/about-battlefield.webp" width="460" height="420" alt="Soldier advancing past a tank in a smoky battlefield" />
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Version boundary</span>
+        <h2>Know which guide applies to your game</h2>
+        <p>Matching names do not prove that the browser and Android releases share controls, modes, accounts, progress, or events.</p>
+      </div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Warfare 1942 guide evidence by version">
+        <table class="version-table">
+          <thead><tr><th scope="col">Version</th><th scope="col">What this page covers</th><th scope="col">Evidence boundary</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Web browser</th><td>Published keyboard bindings, browser launch flow, and first-match guidance</td><td>Use the loaded build's settings screen as the final authority.</td></tr>
+            <tr><th scope="row">Current Android</th><td>Identity and published feature context only</td><td>The exact touch layout has not been independently documented here.</td></tr>
+            <tr><th scope="row">Legacy Android</th><td>Not used for current control instructions</td><td>Old mobile guides may describe modes or menus that no longer apply.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -57,33 +109,19 @@ const schema = {
     </div>
   </section>
 
-  <section class="section section--surface">
+  <section id="controls" class="section section--surface">
     <div class="shell">
       <div class="section-heading">
-        <span class="eyebrow">Keyboard reference</span>
+        <span class="eyebrow">Published fact</span>
         <h2>Published web controls</h2>
         <p>Distributor listings currently associate these bindings with the web build. Treat the in-game settings screen as the final authority for the release you load.</p>
       </div>
       <div class="table-scroll" tabindex="0" role="region" aria-label="Warfare 1942 control differences">
         <table class="version-table">
-          <thead>
-            <tr>
-              <th scope="col">Platform</th>
-              <th scope="col">Control format</th>
-              <th scope="col">Evidence status</th>
-            </tr>
-          </thead>
+          <thead><tr><th scope="col">Platform</th><th scope="col">Control format</th><th scope="col">Evidence status</th></tr></thead>
           <tbody>
-            <tr>
-              <th scope="row">Web browser</th>
-              <td>Published keyboard bindings with mouse aiming</td>
-              <td>The current published web-control list includes bindings such as <kbd>U</kbd> for the war dog ability, subject to the in-game settings screen for the loaded release.</td>
-            </tr>
-            <tr>
-              <th scope="row">Android</th>
-              <td>Not independently documented</td>
-              <td>The Android listing is verified, but its exact on-screen layout and mobile-specific bindings remain unverified. Do not apply the web <kbd>U</kbd> binding to Android.</td>
-            </tr>
+            <tr><th scope="row">Web browser</th><td>Published keyboard bindings with mouse aiming</td><td>The current published web-control list includes <kbd>U</kbd> for the war dog ability, subject to the loaded release.</td></tr>
+            <tr><th scope="row">Android</th><td>Control layout not independently documented</td><td>The exact on-screen layout and mobile-specific bindings remain unverified. Do not apply the web <kbd>U</kbd> binding to Android.</td></tr>
           </tbody>
         </table>
       </div>
@@ -91,11 +129,49 @@ const schema = {
     </div>
   </section>
 
+  <section id="beginner-tips" class="section">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Guide advice</span>
+        <h2>Warfare 1942 gameplay tips for beginners</h2>
+        <p>These are practical shooter recommendations derived from the published controls. They are not claims about hidden statistics or guaranteed wins.</p>
+      </div>
+      <div class="content-grid">
+        <article class="content-card"><span class="eyebrow">Position</span><h3>Fight from cover</h3><p>Break sight lines before reloading or changing equipment. Moving through open ground gives several opponents a clean angle at once.</p></article>
+        <article class="content-card"><span class="eyebrow">Information</span><h3>Use the map between fights</h3><p>Press <kbd>M</kbd> while safe, then track the visible objective and nearby routes before choosing the next engagement.</p></article>
+        <article class="content-card"><span class="eyebrow">Tempo</span><h3>Reset after contact</h3><p>Recover, reload, and review equipment before pushing forward. A fast reset is safer than entering the next fight half-ready.</p></article>
+        <article class="content-card"><span class="eyebrow">Equipment</span><h3>Switch with a reason</h3><p>Use <kbd>1–5</kbd> to select the item the next distance or objective requires; avoid cycling equipment while exposed.</p></article>
+        <article class="content-card"><span class="eyebrow">Companion</span><h3>Confirm the dog ability</h3><p>Press <kbd>U</kbd> only after checking the loaded build's binding and visible ability state. Another version may behave differently.</p></article>
+        <article class="content-card"><span class="eyebrow">Team</span><h3>Keep chat brief</h3><p>Use <kbd>T</kbd> for short, useful information when safe. The existence of match chat does not prove a persistent friend or squad system.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="shell about-grid">
+      <div>
+        <span class="eyebrow">Gameplay Video</span>
+        <h2>Watch Warfare 1942 before your first match</h2>
+        <p>Y8 published a short Warfare 1942 browser-game overview on its official channel. Use it to confirm the game identity and general presentation, not as proof that every menu, map, or mode still matches the release you load today.</p>
+        <a class="button button--gold" href={gameplayVideoUrl} target="_blank" rel="noopener">Watch the Warfare 1942 gameplay video on YouTube</a>
+      </div>
+      <div class="content-card">
+        <span class="eyebrow">Version label</span>
+        <h3>Browser distributor footage</h3>
+        <p>Published by Y8 on January 2, 2025. This guide links out instead of loading a YouTube iframe, so the video provider receives a request only after you choose to open it.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
-    <div class="shell content-grid">
-      <article class="content-card"><span class="eyebrow">Position</span><h2>Fight from cover</h2><p>Break sight lines before reloading or changing equipment. Moving through open ground gives several opponents a clean angle at once.</p></article>
-      <article class="content-card"><span class="eyebrow">Information</span><h2>Use the map</h2><p>Check the map between fights, not while exposed. Track the objective and nearby routes before choosing the next engagement.</p></article>
-      <article class="content-card"><span class="eyebrow">Tempo</span><h2>Reset after contact</h2><p>After a fight, recover, reload, and review equipment before pushing forward. A fast reset is safer than entering the next fight half-ready.</p></article>
+    <div class="shell">
+      <div class="section-heading"><span class="eyebrow">Common questions</span><h2>Beginner guide FAQ</h2></div>
+      <div class="faq-grid">
+        <article class="faq-item"><h3>Is Warfare 1942 suitable for beginners?</h3><p>The web build uses familiar keyboard and mouse controls. Learn the visible objective, stay near cover, and confirm bindings before the first match.</p></article>
+        <article class="faq-item"><h3>Are browser and Android controls the same?</h3><p>Not verified. The keys on this page belong to published browser listings and should not be applied to Android.</p></article>
+        <article class="faq-item"><h3>Where are the multiplayer modes and maps?</h3><p>Use the <a href="/multiplayer/">multiplayer guide</a> for version-specific mode and map evidence.</p></article>
+        <article class="faq-item"><h3>Does the gameplay video prove current features?</h3><p>No. It helps identify the browser game, while the loaded release and current publisher material remain the authority for changing features.</p></article>
+      </div>
     </div>
   </section>
 
@@ -107,7 +183,7 @@ const schema = {
         <li>Use a current desktop browser with hardware acceleration enabled.</li>
         <li>Disable extensions that block game scripts or third-party frames for this page.</li>
         <li>Close memory-heavy tabs and reload the player.</li>
-        <li>Try the external CrazyGames fallback if the embedded frame is blocked.</li>
+        <li>Try a verified external provider from the <a href="/unblocked/">play-online guide</a>.</li>
         <li>Remember that school or workplace networks may block browser games regardless of this site's availability.</li>
       </ul>
       <p>For platform identity and installation safety, continue to the <a href="/download/">download guide</a>.</p>

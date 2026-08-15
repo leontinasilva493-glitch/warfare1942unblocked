@@ -23,6 +23,8 @@ import { promoStatus } from '../data/promo-status.mjs';
     </div>
   </dl>
 
+  <p class="callout callout--warning">{promoStatus.nextAction}</p>
+
   <div class="promo-update__platforms" aria-label="Verification status by version">
     {promoStatus.platforms.map((platform) => (
       <div>

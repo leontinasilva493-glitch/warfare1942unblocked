@@ -9,6 +9,7 @@ const sourcePages = [
   'src/pages/promo-codes/index.astro',
   'src/pages/download/index.astro',
   'src/pages/how-to-play/index.astro',
+  'src/pages/multiplayer/index.astro',
   'src/pages/unblocked/index.astro',
   'src/pages/chromebook/index.astro',
   'src/pages/privacy/index.astro',
@@ -27,6 +28,7 @@ test('shared data uses the production domain and public playable embed', () => {
   assert.match(source, new RegExp(domain.replaceAll('.', '\\.')));
   assert.ok(source.includes(iframeUrl), 'public game iframe URL must be centralized');
   assert.ok(source.includes('com.warfare.ww2.online'), 'verified Android package must be recorded');
+  assert.ok(source.includes('https://playgama.com/game/warfare-1942'), 'verified Playgama provider URL must be centralized');
 });
 
 test('production source does not contain fabricated promo codes or placeholder domains', () => {
@@ -42,17 +44,23 @@ test('crawl and deployment files target the production domain', () => {
   }
   assert.ok(readFileSync('public/robots.txt', 'utf8').includes(`${domain}/sitemap.xml`));
   const sitemap = readFileSync('public/sitemap.xml', 'utf8');
-  for (const path of ['', 'promo-codes/', 'download/', 'how-to-play/', 'unblocked/', 'chromebook/', 'privacy/', 'contact/']) {
+  for (const path of ['', 'promo-codes/', 'download/', 'how-to-play/', 'multiplayer/', 'unblocked/', 'chromebook/', 'privacy/', 'contact/']) {
     assert.ok(sitemap.includes(`<loc>${domain}/${path}</loc>`), `sitemap missing /${path}`);
   }
 });
 
 test('sitemap dates reflect the pages refreshed for current search intent', () => {
   const sitemap = readFileSync('public/sitemap.xml', 'utf8');
-  for (const path of ['', 'promo-codes/', 'download/', 'how-to-play/', 'unblocked/', 'chromebook/']) {
+  for (const path of ['', 'promo-codes/', 'how-to-play/', 'multiplayer/', 'unblocked/']) {
+    assert.ok(
+      sitemap.includes(`<loc>${domain}/${path}</loc><lastmod>2026-08-15</lastmod>`),
+      `sitemap date is stale for /${path}`
+    );
+  }
+  for (const path of ['download/', 'chromebook/']) {
     assert.ok(
       sitemap.includes(`<loc>${domain}/${path}</loc><lastmod>2026-08-13</lastmod>`),
-      `sitemap date is stale for /${path}`
+      `/${path} lastmod should remain tied to its last substantive update`
     );
   }
   assert.ok(
@@ -70,12 +78,45 @@ test('external related-game clicks are instrumented without thin internal routes
 });
 
 test('autocomplete terms do not create thin phrase-match doorway routes', () => {
-  const rejectedRoutes = ['y8', 'online-shooter', 'armor-games', 'modern-warfare-1942', 'tips', 'cheats', 'weapons'];
+  const rejectedRoutes = [
+    'y8',
+    'playgama',
+    'online-shooter',
+    'armor-games',
+    'modern-warfare-1942',
+    'tips',
+    'beginner-guide',
+    'strategy-tips',
+    'game-features',
+    'best-maps',
+    'videos',
+    'cheats',
+    'weapons'
+  ];
   const sitemap = readFileSync('public/sitemap.xml', 'utf8');
   for (const route of rejectedRoutes) {
     assert.equal(existsSync(`src/pages/${route}/index.astro`), false, `/${route}/ must not become a thin source route`);
     assert.doesNotMatch(sitemap, new RegExp(`/${route}/`, 'i'), `/${route}/ must not enter the sitemap`);
   }
+});
+
+test('approved search intent is consolidated into substantive routes', () => {
+  const howTo = readFileSync('src/pages/how-to-play/index.astro', 'utf8');
+  const online = readFileSync('src/pages/unblocked/index.astro', 'utf8');
+  const multiplayer = readFileSync('src/pages/multiplayer/index.astro', 'utf8');
+  const promoData = readFileSync('src/data/promo-status.mjs', 'utf8');
+  const promoComponent = readFileSync('src/components/PromoUpdateStatus.astro', 'utf8');
+
+  assert.match(howTo, /Beginner Guide/i);
+  assert.match(howTo, /Gameplay Video/i);
+  assert.match(howTo, /youtube\.com\/watch\?v=8XhZIrXphYM/i);
+  assert.match(online, /site\.playgamaUrl/i);
+  assert.match(multiplayer, /Web browser.*Current Android.*Legacy Android/is);
+  assert.match(multiplayer, /Map names.*not independently verified/is);
+  assert.match(multiplayer, /Published fact.*Guide advice.*Not verified/is);
+  assert.match(promoData, /statusLabel:\s*'Update overdue'/i);
+  assert.match(promoData, /scheduled August 14 verification has not been completed/i);
+  assert.match(promoComponent, /promoStatus\.nextAction/i);
 });
 
 test('Astro inline and external scripts declare inline handling explicitly', () => {

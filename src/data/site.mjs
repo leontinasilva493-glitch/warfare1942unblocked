@@ -9,6 +9,7 @@ export const site = {
   embedProvider: 'Gamezhero',
   developerUrl: 'https://fahrenheitdev.com/',
   crazyGamesUrl: 'https://www.crazygames.com/game/warfare-1942-riz',
+  playgamaUrl: 'https://playgama.com/game/warfare-1942',
   googlePlayUrl: 'https://play.google.com/store/apps/details?id=com.warfare.ww2.online',
   legacyAndroidRecordUrl: 'https://www.appbrain.com/app/warfare-1942-shooting-games/com.ww2.shooter.war.games.online',
   warfare1917Url: 'https://armorgames.com/play/2267/',
@@ -20,6 +21,7 @@ export const primaryRoutes = [
   { href: '/promo-codes/', label: 'Promo Codes' },
   { href: '/download/', label: 'Download' },
   { href: '/how-to-play/', label: 'How to Play' },
+  { href: '/multiplayer/', label: 'Multiplayer' },
   { href: '/unblocked/', label: 'Play Online' }
 ];
 
