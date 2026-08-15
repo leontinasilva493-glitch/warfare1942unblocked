@@ -4,6 +4,7 @@ import ControlsGrid from '../components/ControlsGrid.astro';
 import GamePlayer from '../components/GamePlayer.astro';
 import VersionTable from '../components/VersionTable.astro';
 import { guideCards, site } from '../data/site.mjs';
+import { promoStatus } from '../data/promo-status.mjs';
 
 const title = 'Warfare 1942 Guide: Codes, Download & Online Play';
 const description = 'Play Warfare 1942, a session-based World War II online shooter, and check browser controls, Android identity, and current promo code status.';
@@ -39,7 +40,12 @@ const schema = [
       {
         '@type': 'Question',
         name: 'Are there verified Warfare 1942 promo codes?',
-        acceptedAnswer: { '@type': 'Answer', text: `This guide has not independently verified an active Warfare 1942 promo code as of ${site.verifiedDate}.` }
+        acceptedAnswer: { '@type': 'Answer', text: `This guide last verified 0 active Warfare 1942 promo codes on ${promoStatus.lastChecked.shortLabel}. The scheduled ${promoStatus.nextCheck.shortLabel ?? 'August 14, 2026'} refresh is overdue and has not been recorded as completed.` }
+      },
+      {
+        '@type': 'Question',
+        name: 'Is Warfare 1942 multiplayer?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Yes. Publisher and browser-provider material describes an online, session-based shooter, but modes and social features can differ by version.' }
       },
       {
         '@type': 'Question',
@@ -102,6 +108,11 @@ const schema = [
           <h3><a href="/chromebook/">Check Chromebook browser play</a></h3>
           <p>Use the ChromeOS-specific launch checklist and understand what a managed school device or network can still restrict.</p>
         </article>
+        <article class="content-card">
+          <span class="eyebrow">Multiplayer</span>
+          <h3><a href="/multiplayer/">Compare modes, maps, and team play</a></h3>
+          <p>Separate browser, current Android, and legacy mobile evidence before following a mode name or map claim.</p>
+        </article>
       </nav>
     </div>
   </section>
@@ -121,7 +132,7 @@ const schema = [
     <div class="shell about-grid">
       <div class="about-grid__copy">
         <span class="eyebrow">About the game</span>
-        <h2>Built for a fast, heavy frontline</h2>
+        <h2>Warfare 1942 Game Features</h2>
         <p><a href={site.developerUrl} target="_blank" rel="noopener">Fahrenheit Dev</a> presents Warfare 1942 as a session-based shooter for web and mobile platforms. Its published feature set combines quick PvP battles with soldier customization, weapons, tank combat, and companion abilities.</p>
         <p>The current Google Play listing uses the same game name under Mosaic Games LLC. Browser and Android account, progress, purchase, and event compatibility remain unconfirmed, so this guide keeps their identities separate.</p>
         <ul class="feature-list">
@@ -130,6 +141,7 @@ const schema = [
           <li><strong>War dogs</strong> — companions with specialized combat abilities.</li>
           <li><strong>Tank battles</strong> — an armored mode listed for the current Android release.</li>
         </ul>
+        <p><a href="/multiplayer/">Compare multiplayer modes, map evidence, and team tips by version.</a></p>
       </div>
       <img class="about-grid__image" src="/images/about-battlefield.webp" width="460" height="420" alt="Soldier and tank moving through a smoky World War II battlefield" loading="lazy" />
     </div>
@@ -207,7 +219,8 @@ const schema = [
       </div>
       <div class="faq-grid">
         <article class="faq-item"><h3>Can I play without downloading it?</h3><p>Yes. Use the web player for Windows, macOS, or another compatible desktop browser. No PC installer is offered here.</p></article>
-        <article class="faq-item"><h3>Are there verified promo codes?</h3><p>No active code has been independently verified by this guide as of <time datetime={site.verifiedIso}>{site.verifiedDate}</time>.</p></article>
+        <article class="faq-item"><h3>Are there verified promo codes?</h3><p>The last completed review found 0 verified active codes on <time datetime={promoStatus.lastChecked.iso}>{promoStatus.lastChecked.shortLabel}</time>. The scheduled August 14 refresh is overdue and has not been recorded as completed.</p></article>
+        <article class="faq-item"><h3>Is Warfare 1942 multiplayer?</h3><p>Yes. Current publisher and provider material describes online, session-based battles. Use the <a href="/multiplayer/">multiplayer guide</a> for version-specific mode and map evidence.</p></article>
         <article class="faq-item"><h3>Is the Android app the same as the web build?</h3><p>They share the Warfare 1942 name, but cross-platform accounts, progress, and code compatibility remain unconfirmed.</p></article>
         <article class="faq-item"><h3>Does “unblocked” mean every network will allow it?</h3><p>No. A school, employer, ISP, or browser policy can still block game or third-party iframe traffic.</p></article>
         <article class="faq-item">

@@ -9,6 +9,7 @@ const builtRoutes = new Map([
   ['/promo-codes/', 'dist/promo-codes/index.html'],
   ['/download/', 'dist/download/index.html'],
   ['/how-to-play/', 'dist/how-to-play/index.html'],
+  ['/multiplayer/', 'dist/multiplayer/index.html'],
   ['/unblocked/', 'dist/unblocked/index.html'],
   ['/chromebook/', 'dist/chromebook/index.html'],
   ['/privacy/', 'dist/privacy/index.html'],
@@ -81,6 +82,8 @@ test('homepage routes generic visitors and disambiguates similarly named games',
   assert.match(html, /Battlefield 1942/i);
   assert.match(html, /Call of War 1942/i);
   assert.match(html, /different game series/i);
+  assert.match(html, /Warfare 1942 Game Features/i);
+  assert.match(html, /href="\/multiplayer\/"/i);
 });
 
 test('online page directly answers play-now and no-download intent', () => {
@@ -95,6 +98,8 @@ test('online page offers verified provider choices without promising network byp
   assert.match(html, /Where can I play Warfare 1942 online/i);
   assert.match(html, /href="https:\/\/www\.y8\.com\/games\/warfare_1942"/i);
   assert.match(html, /Y8.*desktop.*keyboard.*mouse/is);
+  assert.match(html, /href="https:\/\/playgama\.com\/game\/warfare-1942"/i);
+  assert.match(html, /Playgama.*PC.*no download/is);
   assert.match(html, /availability and device support can vary by provider/i);
   assert.match(html, /does not provide proxies, VPN instructions/i);
 });
@@ -169,6 +174,8 @@ test('promo-code page exposes a truthful Friday verification cadence', () => {
   assert.match(html, /<time datetime="2026-08-07">Friday, August 7, 2026<\/time>/i);
   assert.match(html, /Next scheduled check/i);
   assert.match(html, /<time datetime="2026-08-14">Friday, August 14, 2026<\/time>/i);
+  assert.match(html, /Update overdue/i);
+  assert.match(html, /scheduled August 14 verification has not been completed/i);
   assert.match(html, /Verification history/i);
   assert.match(html, /Web and Android reviewed/i);
 });
@@ -192,10 +199,28 @@ test('how-to-play page distinguishes verified web keys from mobile controls', ()
 
 test('how-to-play page identifies the covered browser shooter in search-facing copy', () => {
   const html = readFileSync('dist/how-to-play/index.html', 'utf8');
-  assert.match(html, /<title>How to Play Warfare 1942 Browser Game:/i);
-  assert.match(html, /<h1[^>]*>How to Play Warfare 1942 Browser Game/i);
+  assert.match(html, /<title>How to Play Warfare 1942: Beginner Guide, Controls &amp; Tips/i);
+  assert.match(html, /<h1[^>]*>Warfare 1942 Beginner Guide: How to Play/i);
   assert.match(html, /CrazyGames/i);
   assert.match(html, /not Call of War or Battlefield 1942/i);
+  assert.match(html, /Warfare 1942 Gameplay Video/i);
+  assert.match(html, /href="https:\/\/www\.youtube\.com\/watch\?v=8XhZIrXphYM"/i);
+});
+
+test('multiplayer page separates version evidence and answers modes, maps, and team intent', () => {
+  const html = readFileSync('dist/multiplayer/index.html', 'utf8');
+  assert.match(html, /<title>Warfare 1942 Multiplayer Guide: Modes, Maps &amp; Team Tips/i);
+  assert.match(html, /<h1[^>]*>Warfare 1942 Multiplayer Modes and Guide/i);
+  assert.match(html, /Web browser.*Current Android.*Legacy Android/is);
+  assert.match(html, /session-based shooter/i);
+  assert.match(html, /dedicated tank battle mode/i);
+  assert.match(html, /Map names and a best-map ranking are not independently verified/i);
+  assert.match(html, /Published fact/i);
+  assert.match(html, /Guide advice/i);
+  assert.match(html, /Not verified/i);
+  assert.match(html, /href="\/how-to-play\/"/i);
+  assert.match(html, /"@type":"FAQPage"/i);
+  assert.doesNotMatch(html, /best map is/i);
 });
 
 test('Chromebook page gives a scoped play path without promising policy bypasses', () => {

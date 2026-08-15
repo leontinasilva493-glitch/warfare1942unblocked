@@ -8,6 +8,7 @@ ROUTES = [
     "/promo-codes/",
     "/download/",
     "/how-to-play/",
+    "/multiplayer/",
     "/unblocked/",
     "/chromebook/",
     "/privacy/",
@@ -58,6 +59,22 @@ def assert_chromebook_page(page):
     assert page.get_by_text("This guide does not provide proxies, VPNs, or bypass methods.", exact=False).is_visible()
 
 
+def assert_search_intent_pages(page, viewport_label):
+    page.goto(f"{BASE_URL}/how-to-play/", wait_until="domcontentloaded", timeout=60_000)
+    page.get_by_role("heading", name="Warfare 1942 Beginner Guide: How to Play").wait_for(state="visible")
+    assert page.get_by_role("link", name="Watch the Warfare 1942 gameplay video on YouTube").get_attribute("href") == "https://www.youtube.com/watch?v=8XhZIrXphYM"
+    page.screenshot(path=str(ARTIFACTS / f"how-to-play-{viewport_label}.png"), full_page=True)
+
+    page.goto(f"{BASE_URL}/unblocked/", wait_until="domcontentloaded", timeout=60_000)
+    assert page.get_by_role("link", name="Open Warfare 1942 on Playgama").get_attribute("href") == "https://playgama.com/game/warfare-1942"
+    page.screenshot(path=str(ARTIFACTS / f"unblocked-{viewport_label}.png"), full_page=True)
+
+    page.goto(f"{BASE_URL}/multiplayer/", wait_until="domcontentloaded", timeout=60_000)
+    page.get_by_role("heading", name="Warfare 1942 Multiplayer Modes and Guide").wait_for(state="visible")
+    assert page.get_by_text("Map names and a best-map ranking are not independently verified", exact=False).is_visible()
+    page.screenshot(path=str(ARTIFACTS / f"multiplayer-{viewport_label}.png"), full_page=True)
+
+
 def main():
     ARTIFACTS.mkdir(parents=True, exist_ok=True)
     first_party_errors = []
@@ -87,6 +104,7 @@ def main():
         assert_home_interactions(page)
         page.screenshot(path=str(ARTIFACTS / "home-desktop.png"), full_page=True)
         assert_chromebook_page(page)
+        assert_search_intent_pages(page, "desktop")
         page.screenshot(path=str(ARTIFACTS / "chromebook-desktop.png"), full_page=True)
 
         response = page.goto(f"{BASE_URL}/route-that-does-not-exist", wait_until="domcontentloaded")
@@ -101,6 +119,7 @@ def main():
         assert overflow <= 1, f"mobile homepage has {overflow}px horizontal overflow"
         mobile_page.screenshot(path=str(ARTIFACTS / "home-mobile.png"), full_page=True)
         assert_chromebook_page(mobile_page)
+        assert_search_intent_pages(mobile_page, "mobile")
         overflow = mobile_page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
         assert overflow <= 1, f"mobile Chromebook page has {overflow}px horizontal overflow"
         mobile_page.screenshot(path=str(ARTIFACTS / "chromebook-mobile.png"), full_page=True)

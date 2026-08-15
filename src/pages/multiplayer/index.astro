@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { site } from '../../data/site.mjs';
+
+const title = 'Warfare 1942 Multiplayer Guide: Modes, Maps & Team Tips';
+const description = 'Compare Warfare 1942 multiplayer modes, map evidence, team play, and version differences for the browser game, current Android app, and legacy mobile release.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is Warfare 1942 multiplayer?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Current publisher and browser-provider material describes Warfare 1942 as an online session-based shooter with player-versus-player battles. Exact modes and social features can differ by version.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What multiplayer modes are in Warfare 1942?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A dedicated tank battle mode is published for the current Android listing. Older mobile guides name additional modes, but those names have not been verified for the current browser or Android release.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the best map in Warfare 1942?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The developer confirms that the game uses multiple designed maps, but this guide has not independently verified a current official map list or enough comparable play data to rank a best map.'
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} path="/multiplayer/" schema={schema}>
+  <header class="page-hero">
+    <div class="shell">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Multiplayer', href: '/multiplayer/' }]} />
+      <span class="eyebrow">Version-aware multiplayer guide</span>
+      <h1>Warfare 1942 Multiplayer Modes and Guide</h1>
+      <p class="page-hero__lede">Warfare 1942 is presented as an online, session-based shooter, but the browser build, current Android app, and older Android release are not interchangeable. Start with the version table before using a mode name, map claim, or team-play instruction.</p>
+    </div>
+  </header>
+
+  <section class="section section--surface">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Evidence key</span>
+        <h2>How to read this multiplayer guide</h2>
+        <p>This page keeps publisher claims, practical recommendations, and unknowns visibly separate.</p>
+      </div>
+      <div class="content-grid">
+        <article class="content-card"><span class="eyebrow">Published fact</span><h3>Directly described</h3><p>A developer, current store listing, or browser provider publicly describes the feature for an identified version.</p></article>
+        <article class="content-card"><span class="eyebrow">Guide advice</span><h3>Practical recommendation</h3><p>A general multiplayer tactic derived from visible objectives and published controls, not a hidden-stat claim.</p></article>
+        <article class="content-card"><span class="eyebrow">Not verified</span><h3>Do not assume</h3><p>The available sources do not establish the feature for the current version, so this guide leaves it unresolved.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Identify your build</span>
+        <h2>Multiplayer evidence by Warfare 1942 version</h2>
+        <p>Package identity matters. A mode documented for an older mobile app must not be copied into a browser guide as a current fact.</p>
+      </div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Warfare 1942 multiplayer evidence by version">
+        <table class="version-table">
+          <thead><tr><th scope="col">Version</th><th scope="col">Published multiplayer evidence</th><th scope="col">What remains unverified</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row">Web browser</th>
+              <td>Fahrenheit Dev describes a session-based shooter across multiple designed maps. Browser providers describe online player-versus-player scoring and publish map and chat controls.</td>
+              <td>Current named mode list, bots, matchmaking rules, private lobbies, friend invitations, and cross-provider progress.</td>
+            </tr>
+            <tr>
+              <th scope="row">Current Android</th>
+              <td>The current package <code>com.warfare.ww2.online</code> publishes online PvP, clans, ranked play, and a dedicated tank battle mode.</td>
+              <td>Whether its accounts, purchases, modes, events, or progress connect to the browser build.</td>
+            </tr>
+            <tr>
+              <th scope="row">Legacy Android</th>
+              <td>Older third-party guides describe Deathmatch, Capture the Point, Mayhem, and At Knifepoint for a previous mobile identity.</td>
+              <td>Those names and unlock levels are not treated as current browser or current Android features.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="shell about-grid">
+      <div>
+        <span class="eyebrow">Published fact</span>
+        <h2>What happens in a browser multiplayer match?</h2>
+        <p>Current browser-provider material describes short, score-driven player-versus-player sessions. The developer describes dynamic firefights and strategic movement across a variety of maps.</p>
+        <p>Before fighting, read the objective and timer visible in the build you actually loaded. The current screen is more reliable than an undated walkthrough or a guide for another package.</p>
+        <a class="button button--gold" href="/unblocked/">Open the browser player</a>
+      </div>
+      <div class="content-card">
+        <span class="eyebrow">Not verified</span>
+        <h3>Can you invite friends?</h3>
+        <p>Online chat and team-oriented publisher copy do not by themselves prove a stable friend list, party system, private lobby, or same-provider queue. This guide does not publish joining steps until the current flow is reproduced.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Modes</span>
+        <h2>Which Warfare 1942 multiplayer modes are confirmed?</h2>
+        <p>Only publish a mode under the version where the current evidence supports it.</p>
+      </div>
+      <div class="content-grid">
+        <article class="content-card"><span class="eyebrow">Web browser</span><h3>Session-based PvP</h3><p>The web game is described as a session-based online shooter. A complete current named-mode list is not independently verified.</p></article>
+        <article class="content-card"><span class="eyebrow">Current Android</span><h3>Tank battle mode</h3><p>The current Android listing publishes a dedicated tank battle mode alongside its regular online PvP feature set.</p></article>
+        <article class="content-card"><span class="eyebrow">Legacy Android</span><h3>Historical mode names</h3><p>Deathmatch, Capture the Point, Mayhem, and At Knifepoint appear in an older third-party mobile guide. Treat them as legacy evidence, not current instructions.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="shell prose">
+      <span class="eyebrow">Maps</span>
+      <h2>Warfare 1942 maps and “best map” searches</h2>
+      <p><strong>Map names and a best-map ranking are not independently verified.</strong> Fahrenheit Dev confirms a variety of carefully designed maps, while current Android material describes World War II-inspired environments. Neither source gives this guide a stable, current map list with enough comparable play evidence for a ranking.</p>
+      <p>A useful map guide needs the exact version, official or in-game map name, objective layout, spawn behavior, major routes, and a reproducible observation date. Until that evidence exists, naming or ranking maps would turn a search suggestion into a fabricated answer.</p>
+      <div class="callout">Use the in-game map with <kbd>M</kbd> on the web build. Check it between fights, not while exposed, and confirm the visible objective before choosing a route.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-heading">
+        <span class="eyebrow">Guide advice</span>
+        <h2>Warfare 1942 multiplayer tips</h2>
+        <p>These recommendations do not rely on unverified weapon statistics, map tiers, or matchmaking claims.</p>
+      </div>
+      <div class="content-grid">
+        <article class="content-card"><h3>Read the objective first</h3><p>Score conditions decide which fights matter. Confirm the visible objective before leaving the opening area.</p></article>
+        <article class="content-card"><h3>Move with a fallback route</h3><p>Advance from cover to cover and keep one safe direction available for reloading or recovering.</p></article>
+        <article class="content-card"><h3>Check the map while safe</h3><p>Use <kbd>M</kbd> after contact or behind cover; avoid studying the map in an exposed lane.</p></article>
+        <article class="content-card"><h3>Share short information</h3><p>Use <kbd>T</kbd> for concise location or objective information when the current match supports chat.</p></article>
+        <article class="content-card"><h3>Match equipment to distance</h3><p>Use <kbd>1–5</kbd> deliberately instead of cycling equipment in the middle of an exposed fight.</p></article>
+        <article class="content-card"><h3>Reset before the next push</h3><p>Reload, recover, and confirm the next route before turning one engagement into a second disadvantaged fight.</p></article>
+      </div>
+      <div class="callout">Need the full keyboard list and first-match sequence? Continue to the <a href="/how-to-play/">Warfare 1942 beginner guide</a>.</div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="shell">
+      <div class="section-heading"><span class="eyebrow">Common questions</span><h2>Multiplayer FAQ</h2></div>
+      <div class="faq-grid">
+        <article class="faq-item"><h3>Is Warfare 1942 multiplayer?</h3><p>Yes. Current developer and provider material describes online, session-based player-versus-player battles.</p></article>
+        <article class="faq-item"><h3>What multiplayer modes are available?</h3><p>A tank battle mode is published for the current Android package. The current browser mode names are not independently verified.</p></article>
+        <article class="faq-item"><h3>What is the best Warfare 1942 map?</h3><p>No defensible ranking is available. The developer confirms multiple maps, but current names and comparable match evidence remain incomplete.</p></article>
+        <article class="faq-item"><h3>Does progress transfer between providers?</h3><p>Not verified. Use the <a href="/download/">version comparison</a> and do not assume accounts, purchases, saves, or events transfer.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell prose">
+      <span class="eyebrow">Primary source</span>
+      <h2>Check the current developer description</h2>
+      <p>For the published feature overview, open <a href={site.developerUrl} target="_blank" rel="noopener">Fahrenheit Dev's Warfare 1942 page</a>. Distributor availability and in-game behavior can change independently, so the build you load remains the final authority for live menus and modes.</p>
+    </div>
+  </section>
+</BaseLayout>

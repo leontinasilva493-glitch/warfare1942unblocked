@@ -17,7 +17,7 @@ const { currentPath = '/' } = Astro.props;
     </button>
     <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation" data-primary-nav>
       <a href="/" aria-current={currentPath === '/' ? 'page' : undefined}>Home</a>
-      {primaryRoutes.slice(0, 3).map((route) => (
+      {primaryRoutes.slice(0, 4).map((route) => (
         <a href={route.href} aria-current={currentPath === route.href ? 'page' : undefined}>{route.label}</a>
       ))}
     </nav>
